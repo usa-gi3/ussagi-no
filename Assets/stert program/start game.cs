@@ -14,6 +14,6 @@ public class startgame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SceneManager.LoadScene("SampleScene");
+        if (Input.GetKeyDown(KeyCode.Space)) SceneManager.LoadScene("SampleScene");
     }
 }
