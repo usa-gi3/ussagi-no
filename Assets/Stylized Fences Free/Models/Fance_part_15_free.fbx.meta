@@ -1,14 +1,14 @@
 fileFormatVersion: 2
 guid: 3a3b26f5b31e0d84aa46aa71e25001f2
 ModelImporter:
-  serializedVersion: 22102
+  serializedVersion: 22200
   internalIDToNameTable: []
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Fences_Base_map_2k.002
-    second: {fileID: 2100000, guid: 30ac226399694114094c69a0c97b0ded, type: 2}
+    second: {fileID: 2100000, guid: 9d52ce3a3eb1a2642a3ba094a0d17cc7, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -45,6 +45,7 @@ ModelImporter:
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
+    importPhysicalCameras: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -106,6 +107,7 @@ ModelImporter:
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
