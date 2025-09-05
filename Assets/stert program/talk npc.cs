@@ -15,6 +15,11 @@ public class talknpc : MonoBehaviour
     private int messageIndex = 0;
     private bool isTalking = false;
 
+    void Start()
+    {
+        dialogueUI.SetActive(false); // ƒQ[ƒ€ŠJn‚É˜g‚ğÁ‚·
+    }
+
     // Update is called once per frame
     void Update()
     {
