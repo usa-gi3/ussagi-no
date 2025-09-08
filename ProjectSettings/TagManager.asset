@@ -14,6 +14,7 @@ TagManager:
   - Water
   - UI
   - 
+  - CameraOnly
   - 
   - 
   - 
@@ -25,18 +26,17 @@ TagManager:
   - 
   - 
   - 
+  - VenueLayer0
+  - VenueLayer1
+  - PostProcessing
+  - PerformerOnly
   - 
   - 
   - 
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - VenueLayer2
   - 
   - 
   m_SortingLayers:
