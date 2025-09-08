@@ -15,8 +15,17 @@ public class MyPlayerController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        animator = GetComponent<Animator>(); // Animator‚ğæ“¾
+        animator = GetComponent<Animator>();
+
+        if (PositionMemory.hasSavedPosition)
+        {
+            controller.enabled = false; // © ˆê“I‚É–³Œø‰»
+            transform.position = PositionMemory.returnPosition; // © ˆÊ’u‚ğ•œŒ³
+            controller.enabled = true; // © Ä‚Ñ—LŒø‰»
+        }
     }
+
+
 
     void Update()
     {

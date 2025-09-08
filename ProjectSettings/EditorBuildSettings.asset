@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Usagi_Scene/Usagi_Scene.unity
+    guid: a3c7047c1a2ae084b96139d61822775d
+  - enabled: 1
+    path: Assets/Scenes/Usagi_Scene/Shop_Scene.unity
+    guid: 15184b6e2ab3a1847adb8ab824fc2ec2
+  - enabled: 1
+    path: Assets/Scenes/Usagi_Scene/Vinyl_Scene.unity
+    guid: de2bdd7de4df2ad448c38d9104e771a8
   m_configObjects: {}
