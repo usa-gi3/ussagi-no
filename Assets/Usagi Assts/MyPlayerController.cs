@@ -37,7 +37,7 @@ public class MyPlayerController : MonoBehaviour
             moveDirection = horizontalMove;   // ← 水平は常に更新
             moveDirection.y = -1f;            // 地面に押し付ける
 
-            if (Input.GetKeyDown(KeyCode.Space)) // ジャンプ
+            if (Input.GetKeyDown(KeyCode.LeftShift)) // ジャンプ
             {
                 moveDirection.y = jumpSpeed;
             }
