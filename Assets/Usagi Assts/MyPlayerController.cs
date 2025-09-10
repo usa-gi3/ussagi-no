@@ -25,26 +25,34 @@ public class MyPlayerController : MonoBehaviour
         }
     }
 
-
-
     void Update()
     {
         Vector3 input = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
 
+        // 水平移動部分を常に更新
+        Vector3 horizontalMove = transform.TransformDirection(input) * speed;
+
         if (controller.isGrounded)
         {
-            moveDirection = transform.TransformDirection(input) * speed;
+            moveDirection = horizontalMove;   // ← 水平は常に更新
+            moveDirection.y = -1f;            // 地面に押し付ける
 
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.Space)) // ジャンプ
             {
                 moveDirection.y = jumpSpeed;
             }
         }
+        else
+        {
+            moveDirection.x = horizontalMove.x; // ← 空中でも水平入力反映
+            moveDirection.z = horizontalMove.z;
+            moveDirection.y -= gravity * Time.deltaTime;
+        }
 
-        // アニメーションのSpeedに値を渡す
-        animator.SetFloat("iswalking", input.magnitude); // inputの大きさで歩行判断
+        // アニメーション用
+        animator.SetFloat("iswalking", input.magnitude);
 
-        moveDirection.y -= gravity * Time.deltaTime;
+        // 移動実行
         controller.Move(moveDirection * Time.deltaTime);
     }
 }
