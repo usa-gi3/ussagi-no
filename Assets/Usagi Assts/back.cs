@@ -5,23 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class back : MonoBehaviour
 {
-    private bool isTouchingShop = false;
-    private bool isTouchingVinyl = false;
+    private bool isTouchingUsagi = false;
+
+
 
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("衝突したオブジェクトのタグ: " + other.gameObject.tag);
 
-        if (other.CompareTag("shop"))
+        if (other.CompareTag("Usagi"))
         {
-            isTouchingShop = true;
+            isTouchingUsagi = true;
         }
-
-        if (other.CompareTag("Vinyl"))
-        {
-            isTouchingVinyl = true;
-        }
-
     }
 
 
@@ -29,28 +24,18 @@ public class back : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("shop"))
+        if (other.CompareTag("Usagi"))
         {
-            isTouchingShop = false;
+            isTouchingUsagi = false;
         }
 
-        if (other.CompareTag("Vinyl"))
-        {
-            isTouchingVinyl = false;
-        }
     }
 
     void Update()
     {
-        if (isTouchingShop && Input.GetKeyDown(KeyCode.Space))
+        if (isTouchingUsagi && Input.GetKeyDown(KeyCode.Space))
         {
             SceneManager.LoadScene("Usagi_Scene");
         }
-
-        if (isTouchingVinyl && Input.GetKeyDown(KeyCode.Space))
-        {
-            SceneManager.LoadScene("Usagi_Scene");
-        }
-
     }
 }
