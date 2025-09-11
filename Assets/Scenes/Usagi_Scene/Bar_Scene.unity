@@ -4333,7 +4333,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 20.2}
+  m_AnchoredPosition: {x: 0, y: 26.3}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &280702029
@@ -4356,7 +4356,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bb779d5c1f115e44c82aa6f81b029f3f, type: 2}
   m_sharedMaterial: {fileID: -3649477919199228876, guid: bb779d5c1f115e44c82aa6f81b029f3f, type: 2}
@@ -13838,7 +13838,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 38.1
+  field of view: 23.4
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -13864,13 +13864,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 768110468}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.05616073, y: -0.8667138, z: 0.100282185, w: 0.4853831}
-  m_LocalPosition: {x: 10.459999, y: 7.7250285, z: 7.3338866}
+  m_LocalRotation: {x: 0.12391656, y: -0.5897755, z: 0.09220654, w: 0.79265857}
+  m_LocalPosition: {x: 12.24, y: 7.13, z: 0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1541931058}
-  m_LocalEulerAnglesHint: {x: 13.2, y: -121.5, z: 0}
+  m_LocalEulerAnglesHint: {x: 17.771, y: -73.302, z: 0.001}
 --- !u!4 &768676140 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c05e831c1a7cd42409777f8defe5b330, type: 3}
