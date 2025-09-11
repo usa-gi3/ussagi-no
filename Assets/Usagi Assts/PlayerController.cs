@@ -18,26 +18,37 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-
-
     void Update()
     {
+        // 入力取得（ワールド座標系）
         Vector3 input = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+        input = input.normalized;
 
+        // 地面にいるときの移動処理
         if (controller.isGrounded)
         {
-            moveDirection = transform.TransformDirection(input) * speed;
+            moveDirection = input * speed;
 
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.Space))
             {
                 moveDirection.y = jumpSpeed;
             }
         }
 
-        // アニメーションのSpeedに値を渡す
-        animator.SetFloat("iswalking", input.magnitude); // inputの大きさで歩行判断
+        // プレイヤーの向きを移動方向に回転させる（カメラ固定なのでワールド座標でOK）
+        if (input != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(input);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+        }
 
+        // アニメーション制御
+        animator.SetFloat("iswalking", input.magnitude);
+
+        // 重力処理
         moveDirection.y -= gravity * Time.deltaTime;
+
+        // 実際に移動
         controller.Move(moveDirection * Time.deltaTime);
     }
 }

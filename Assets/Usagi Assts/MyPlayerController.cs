@@ -29,8 +29,25 @@ public class MyPlayerController : MonoBehaviour
     {
         Vector3 input = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
 
+<<<<<<< HEAD
         // 水平移動部分を常に更新
         Vector3 horizontalMove = transform.TransformDirection(input) * speed;
+=======
+        if (input.magnitude > 0.1f)
+        {
+            // ローカル→ワールド座標に変換
+            Vector3 worldDirection = transform.TransformDirection(input);
+            worldDirection.y = 0f; // 回転に高さは不要
+
+            // 向きの更新（滑らかに回転）
+            Quaternion targetRotation = Quaternion.LookRotation(worldDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+        }
+
+
+
+
+>>>>>>> mochimochi
 
         if (controller.isGrounded)
         {
