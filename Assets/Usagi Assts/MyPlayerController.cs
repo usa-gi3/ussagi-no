@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -72,4 +72,4 @@ public class MyPlayerController : MonoBehaviour
         // à⁄ìÆé¿çs
         controller.Move(moveDirection * Time.deltaTime);
     }
-}
+}*/

@@ -20,14 +20,29 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        // 入力取得（ワールド座標系）
+        // 入力取得
         Vector3 input = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
         input = input.normalized;
+
+        // カメラの向きに合わせて移動方向を補正
+        Transform cam = Camera.main.transform;
+        Vector3 camForward = cam.forward;
+        Vector3 camRight = cam.right;
+
+        // 水平移動に限定（Y軸を無視）
+        camForward.y = 0f;
+        camRight.y = 0f;
+        camForward.Normalize();
+        camRight.Normalize();
+
+        // カメラ基準の移動方向
+        Vector3 moveInput = camForward * input.z + camRight * input.x;
+        moveInput = moveInput.normalized;
 
         // 地面にいるときの移動処理
         if (controller.isGrounded)
         {
-            moveDirection = input * speed;
+            moveDirection = moveInput * speed;
 
             if (Input.GetKey(KeyCode.Space))
             {
@@ -35,10 +50,10 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // プレイヤーの向きを移動方向に回転させる（カメラ固定なのでワールド座標でOK）
-        if (input != Vector3.zero)
+        // プレイヤーの向きを移動方向に回転
+        if (moveInput != Vector3.zero)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(input);
+            Quaternion targetRotation = Quaternion.LookRotation(moveInput);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
         }
 
