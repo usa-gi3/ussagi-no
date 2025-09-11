@@ -14388,6 +14388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   One_Camera: {fileID: 2035186564}
   Two_Camera: {fileID: 768110468}
+  player: {fileID: 826345221}
 --- !u!1001 &829286068
 PrefabInstance:
   m_ObjectHideFlags: 0

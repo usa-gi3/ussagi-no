@@ -4,74 +4,37 @@ using UnityEngine;
 
 public class Setuyaku_Scene : MonoBehaviour
 {
-<<<<<<< HEAD
     public GameObject One_Camera; // カメラ1
     public GameObject Two_Camera; // カメラ2
+    public GameObject player;     // プレイヤーオブジェクト
 
-    // 移動先の座標（Bar1とBar2）
+    // Bar1とBar2の移動先座標
     Vector3 Bar1Position = new Vector3(1.466238f, -5.756f, 3.129455f);
     Vector3 Bar2Position = new Vector3(-7f, 5f, 3f);
 
-    private string currentTrigger = ""; // 現在接触しているオブジェクトのタグ
+    private Collider triggeredObject = null; // 現在接触しているトリガー
 
-    // ゲーム開始時にカメラ1を有効化
-=======
-    public GameObject One_Camera;
-    public GameObject Two_Camera;
-    public GameObject player; // プレイヤーを指定
-
-    Vector3 Bar1Position = new Vector3(-5.845f, -5.756f, 3.512f);
-    Vector3 Bar2Position = new Vector3(0.252f, 0.152f, 0.672f);
-
-    private Collider triggeredObject;
-
->>>>>>> mochi
     void Start()
     {
         One_Camera.SetActive(true);
         Two_Camera.SetActive(false);
     }
 
-    // トリガーに入ったときにタグを記録
+    // トリガーに入ったときに記録
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Bar1") || other.CompareTag("Bar2"))
         {
-<<<<<<< HEAD
-            currentTrigger = other.tag;
+            triggeredObject = other;
         }
     }
 
-    // トリガーから出たときにタグをリセット
+    // トリガーから出たときにリセット
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Bar1") || other.CompareTag("Bar2"))
+        if (other == triggeredObject)
         {
-            currentTrigger = "";
-        }
-    }
-
-    // スペースキーが押されたら、タグに応じて処理を実行
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (currentTrigger == "Bar1")
-            {
-                One_Camera.SetActive(true);
-                Two_Camera.SetActive(false);
-                transform.position = Bar1Position;
-            }
-            else if (currentTrigger == "Bar2")
-            {
-                One_Camera.SetActive(false);
-                Two_Camera.SetActive(true);
-                transform.position = Bar2Position;
-            }
-        }
-    }
-=======
-            triggeredObject = other;
+            triggeredObject = null;
         }
     }
 
@@ -92,8 +55,7 @@ public class Setuyaku_Scene : MonoBehaviour
                 player.transform.position = Bar2Position;
             }
 
-            triggeredObject = null;
+            triggeredObject = null; // 処理後にリセット
         }
     }
->>>>>>> mochi
 }

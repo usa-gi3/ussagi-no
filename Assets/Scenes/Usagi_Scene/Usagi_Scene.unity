@@ -1056,9 +1056,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9879ea1424d9c4e4792e6b9770248730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpSpeed: 8
-  gravity: 20
 --- !u!143 &60834814
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1133,6 +1130,21 @@ MonoBehaviour:
   cam: {fileID: 1217599345}
   Xsensityvity: 0.5
   Ysensityvity: 0.5
+--- !u!114 &60834822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60834809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d281e017baba5444b0c37ac9f66acfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 6
+  jumpSpeed: 8
+  gravity: 20
 --- !u!1001 &63927918
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10472,6 +10484,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100026, guid: b13da3560aac44b4a8f73af033252169, type: 3}
       insertIndex: 1
       addedObject: {fileID: 60834817}
+    - targetCorrespondingSourceObject: {fileID: 100026, guid: b13da3560aac44b4a8f73af033252169, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 60834822}
     - targetCorrespondingSourceObject: {fileID: 100026, guid: b13da3560aac44b4a8f73af033252169, type: 3}
       insertIndex: -1
       addedObject: {fileID: 60834814}
