@@ -5318,7 +5318,7 @@ GameObject:
   - component: {fileID: 2042661659}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: shop
+  m_TagString: Usagi
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5407,8 +5407,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.99999994, z: 0.99999994}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2.3492575, z: 0.99999994}
+  m_Center: {x: 0, y: 0.6746284, z: 0}
 --- !u!1001 &2044708830
 PrefabInstance:
   m_ObjectHideFlags: 0

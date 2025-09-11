@@ -39993,7 +39993,7 @@ GameObject:
   - component: {fileID: 2042661659}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: shop
+  m_TagString: Usagi
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40082,8 +40082,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.99999994, z: 0.99999994}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2.1644492, z: 0.99999994}
+  m_Center: {x: 0, y: 0.5822233, z: 0}
 --- !u!4 &2045339273 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c05e831c1a7cd42409777f8defe5b330, type: 3}
