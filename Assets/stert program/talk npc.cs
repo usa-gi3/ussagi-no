@@ -62,7 +62,7 @@ public class talknpc : MonoBehaviour
         dialogueText.text = messages[messageIndex];
 
         // 会話中はプレイヤーの動きを止める
-        player.GetComponent<move>().enabled = false;
+        player.GetComponent<PlayerController>().enabled = false;
     }
 
     void NextMessage()
@@ -84,6 +84,6 @@ public class talknpc : MonoBehaviour
         dialogueUI.SetActive(false);
 
         // 会話終了したら動きを戻す
-        player.GetComponent<move>().enabled = true;
+        player.GetComponent<PlayerController>().enabled = true;
     }
 }
