@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
         {
             moveDirection = input * speed;
 
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.LeftShift))
             {
                 moveDirection.y = jumpSpeed;
             }

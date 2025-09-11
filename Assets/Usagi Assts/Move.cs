@@ -5,6 +5,7 @@ public class Move : MonoBehaviour
 {
     private bool isTouchingShop = false;
     private bool isTouchingVinyl = false;
+    private bool isTouchingBar = false;
 
     void OnTriggerEnter(Collider other)
     {
@@ -19,6 +20,12 @@ public class Move : MonoBehaviour
         {
             isTouchingVinyl = true;
         }
+
+
+        if (other.gameObject.CompareTag("Bar1"))
+        {
+            isTouchingBar = true;
+        }
     }
 
     void OnTriggerExit(Collider other)
@@ -31,6 +38,11 @@ public class Move : MonoBehaviour
         if (other.gameObject.CompareTag("Vinyl"))
         {
             isTouchingVinyl = false;
+        }
+
+        if (other.gameObject.CompareTag("Bar1"))
+        {
+            isTouchingBar = false;
         }
     }
 
@@ -48,6 +60,13 @@ public class Move : MonoBehaviour
             Debug.Log("•Û‘¶‚·‚éˆÊ’u: " + transform.position);
             PositionMemory.SavePosition(transform.position);
             SceneManager.LoadScene("Vinyl_Scene");
+        }
+
+        if (isTouchingBar && Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("•Û‘¶‚·‚éˆÊ’u: " + transform.position);
+            PositionMemory.SavePosition(transform.position);
+            SceneManager.LoadScene("Bar_Scene");
         }
     }
 }
