@@ -13790,6 +13790,7 @@ GameObject:
   - component: {fileID: 768110471}
   - component: {fileID: 768110470}
   - component: {fileID: 768110469}
+  - component: {fileID: 768110472}
   m_Layer: 0
   m_Name: Main Camera (1)
   m_TagString: MainCamera
@@ -13815,7 +13816,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.101960786, g: 0.09838911, b: 0.09838911, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -13864,13 +13865,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 768110468}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12391656, y: -0.5897755, z: 0.09220654, w: 0.79265857}
+  m_LocalRotation: {x: 0.12462989, y: -0.5835933, z: 0.09124015, w: 0.7972211}
   m_LocalPosition: {x: 12.24, y: 7.13, z: 0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1541931058}
-  m_LocalEulerAnglesHint: {x: 17.771, y: -73.302, z: 0.001}
+  m_LocalEulerAnglesHint: {x: 17.771, y: -72.411, z: 0.001}
+--- !u!114 &768110472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768110468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53f0085c971e7f940a6d20a5a5e79433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 826345234}
+  heightOffset: 1.5
 --- !u!4 &768676140 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c05e831c1a7cd42409777f8defe5b330, type: 3}
@@ -14648,6 +14663,11 @@ MonoBehaviour:
   One_Camera: {fileID: 2035186564}
   Two_Camera: {fileID: 768110468}
   player: {fileID: 826345221}
+--- !u!4 &826345234 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400026, guid: b13da3560aac44b4a8f73af033252169, type: 3}
+  m_PrefabInstance: {fileID: 1062584751}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &829286068
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39749,7 +39769,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &2035186565
 AudioListener:
   m_ObjectHideFlags: 0
@@ -39768,7 +39788,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.101960786, g: 0.101960786, b: 0.101960786, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
