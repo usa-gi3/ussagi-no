@@ -4,29 +4,33 @@ using UnityEngine;
 
 public class PauseMenuUI : MonoBehaviour
 {
-    public GameObject menuPanel; // メニューのUIパネル
 
-    private bool isOpen = false;
+    [SerializeField]
+    //　ポーズした時に表示するUIのプレハブ
+    private GameObject pausemenuUIPrefab;
+    //　ポーズUIのインスタンス
+    private GameObject pausemenuUIInstance;
 
     void Update()
     {
-        // Escapeキーやハンバーガーボタンで開閉
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            ToggleMenu();
+            //メニューを開いている間ポーズ
+            if (pausemenuUIInstance == null)
+            {
+                pausemenuUIInstance = Instantiate(pausemenuUIPrefab);
+                Time.timeScale = 0f; //ゲーム停止
+            }
+            else
+            {
+                Destroy(pausemenuUIInstance);
+                Time.timeScale = 1f; //ゲーム再開
+            }
         }
     }
 
-    public void ToggleMenu()
-    {
-        isOpen = !isOpen;
-        menuPanel.SetActive(isOpen);
-
-        // メニュー開いてる間はポーズしたいならTimeScaleを止める
-        Time.timeScale = isOpen ? 0f : 1f;
-    }
-
     // UIボタンから呼ぶ
+    //着せ替え用
     public void OnSelectCharacter(int id)
     {
         GameManager.Instance.ChangeCharacter(id);
