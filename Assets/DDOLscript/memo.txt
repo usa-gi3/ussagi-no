@@ -1,0 +1,14 @@
+GameManager = キャラ管理の中枢（選択中Prefabの保持 + 実際の生成/差し替え）
+
+各シーンのSpawnPoint = キャラの開始位置を指定する役割
+
+メニューUI = キャラ選択の操作 → GameControllerに反映
+
+
+ButtonコンポーネントのOnClickイベントに
+ OnSelectCharacter(int id) を割り当てる、ボタンでキャラ差し替え可能
+
+
+シーン開始 → SceneInitializer がSpawnPointにキャラを生成/配置
+プレイ中にメニューを開いてキャラを選択 → GameController.ChangeCharacter(id) が呼ばれてPrefab差し替え
+そのまま次のシーンへ → SceneInitializer が同じキャラをスポーン位置に移動
