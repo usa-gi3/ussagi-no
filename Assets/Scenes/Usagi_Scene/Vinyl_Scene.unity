@@ -6934,7 +6934,7 @@ GameObject:
   - component: {fileID: 2042661659}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Usagi
+  m_TagString: Vinyl
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7023,8 +7023,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.4851236, z: 0.99999994}
-  m_Center: {x: 0, y: 0.24256147, z: 0}
+  m_Size: {x: 1, y: 3.5892792, z: 0.99999994}
+  m_Center: {x: 0, y: 1.2946389, z: 0}
 --- !u!1001 &2042932491
 PrefabInstance:
   m_ObjectHideFlags: 0

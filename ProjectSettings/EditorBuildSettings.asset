@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Usagi_Scene/Bar_Scene.unity
     guid: b8bd98985302d0f4b8980a1c7c7947c7
+  - enabled: 1
+    path: Assets/Scenes/Usagi_Scene/Temple_Scene.unity
+    guid: fc4828aa3d63cc945a092a3f9bae24bf
+  - enabled: 1
+    path: Assets/Scenes/Usagi_Scene/Pizza1_Scene.unity
+    guid: 64ac0aa2c77be7d46a7f38c203af90ed
   m_configObjects: {}
