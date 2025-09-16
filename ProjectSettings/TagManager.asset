@@ -9,6 +9,10 @@ TagManager:
   - Bar2
   - Bar1
   - Usagi
+  - Bar
+  - Temple
+  - temple
+  - Pizza1
   layers:
   - Default
   - TransparentFX

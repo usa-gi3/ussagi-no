@@ -6,6 +6,8 @@ public class Move : MonoBehaviour
     private bool isTouchingShop = false;
     private bool isTouchingVinyl = false;
     private bool isTouchingBar = false;
+    private bool isTouchingTemple = false;
+    private bool isTouchingPizza1 = false;
 
     void OnTriggerEnter(Collider other)
     {
@@ -22,10 +24,22 @@ public class Move : MonoBehaviour
         }
 
 
-        if (other.gameObject.CompareTag("Bar1"))
+        if (other.gameObject.CompareTag("Bar"))
         {
             isTouchingBar = true;
         }
+
+        if (other.gameObject.CompareTag("Temple"))
+        {
+            isTouchingTemple = true;
+        }
+
+        if (other.CompareTag("Pizza1"))
+        {
+            isTouchingPizza1 = true;
+        }
+
+
     }
 
     void OnTriggerExit(Collider other)
@@ -40,9 +54,19 @@ public class Move : MonoBehaviour
             isTouchingVinyl = false;
         }
 
-        if (other.gameObject.CompareTag("Bar1"))
+        if (other.gameObject.CompareTag("Bar"))
         {
             isTouchingBar = false;
+        }
+
+        if (other.gameObject.CompareTag("Temple"))
+        {
+            isTouchingTemple = false;
+        }
+
+        if (other.CompareTag("Pizza1"))
+        {
+            isTouchingPizza1 = false;
         }
     }
 
@@ -67,6 +91,20 @@ public class Move : MonoBehaviour
             Debug.Log("•Û‘¶‚·‚éˆÊ’u: " + transform.position);
             PositionMemory.SavePosition(transform.position);
             SceneManager.LoadScene("Bar_Scene");
+        }
+
+        if (isTouchingTemple && Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("•Û‘¶‚·‚éˆÊ’u: " + transform.position);
+            PositionMemory.SavePosition(transform.position);
+            SceneManager.LoadScene("Temple_Scene");
+        }
+
+        if (isTouchingPizza1 && Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("•Û‘¶‚·‚éˆÊ’u: " + transform.position);
+            PositionMemory.SavePosition(transform.position);
+            SceneManager.LoadScene("Pizza1_Scene");
         }
     }
 }
