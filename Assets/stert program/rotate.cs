@@ -23,17 +23,16 @@ public class rotate : MonoBehaviour
             gondola.SetParent(wheel, true); // true: ワールド座標を保持して親子化
         }
     }
-
     void Update()
     {
-        // 観覧車本体をZ軸基準で回転
+        // 観覧車を回す
         wheel.Rotate(Vector3.forward * wheelSpeed * Time.deltaTime);
 
-        // ゴンドラを常にワールドの下方向へ向ける
         foreach (Transform gondola in gondolas)
         {
-            gondola.up = Vector3.up * 1;  // 上ベクトルを真下に固定（=地面に対して下向き）
+            // ゴンドラの上方向をワールド上に固定
+            gondola.rotation = Quaternion.LookRotation(gondola.forward, Vector3.up);
         }
     }
-    
+
 }
