@@ -10,6 +10,7 @@ public class back : MonoBehaviour
     private bool isTouchingBar = false;
     private bool isTouchingTemple = false;
     private bool isTouchingPizza1 = false;
+    private bool isTouchingofice = false;
 
     void OnTriggerEnter(Collider other)
     {
@@ -39,6 +40,12 @@ public class back : MonoBehaviour
         {
             isTouchingPizza1 = true;
         }
+
+        if (other.CompareTag("ofice"))
+        {
+            isTouchingofice = true;
+        }
+
 
     }
 
@@ -72,34 +79,44 @@ public class back : MonoBehaviour
             isTouchingPizza1 = false;
         }
 
-    }
-
-    void Update()
-    {
-        if (isTouchingShop && Input.GetKeyDown(KeyCode.Space))
+        if (other.CompareTag("ofice"))
         {
-            SceneManager.LoadScene("Usagi_Scene");
-        }
+            isTouchingofice = false;
 
-        if (isTouchingVinyl && Input.GetKeyDown(KeyCode.Space))
-        {
-            SceneManager.LoadScene("Usagi_Scene");
-        }
-
-        if (isTouchingBar && Input.GetKeyDown(KeyCode.Space))
-        {
-            SceneManager.LoadScene("Usagi_Scene");
-        }
-
-        if (isTouchingTemple && Input.GetKeyDown(KeyCode.Space))
-        {
-            SceneManager.LoadScene("Usagi_Scene");
-        }
-
-        if (isTouchingPizza1 && Input.GetKeyDown(KeyCode.Space))
-        {
-            SceneManager.LoadScene("Usagi_Scene");
         }
 
     }
+
+        void Update()
+        {
+            if (isTouchingShop && Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene("Usagi_Scene");
+            }
+
+            if (isTouchingVinyl && Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene("Usagi_Scene");
+            }
+
+            if (isTouchingBar && Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene("Usagi_Scene");
+            }
+
+            if (isTouchingTemple && Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene("Usagi_Scene");
+            }
+
+            if (isTouchingPizza1 && Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene("Usagi_Scene");
+            }
+
+            if (isTouchingofice && Input.GetKeyDown(KeyCode.Space))
+            {
+                SceneManager.LoadScene("Usagi_Scene");
+            }
+        }
 }
