@@ -4,19 +4,29 @@ using UnityEngine;
 
 public class SceneInitializer : MonoBehaviour
 {
-    public Transform spawnPoint; //スポーン地点
+    //[SerializeField]
+    //private Transform spawnPoint; //スポーン地点
 
     void Start()
     {
-        if (GameManager.Instance.currentCharacter == null)
+        // シーン内のSpawnPointを探す
+        SpawnPoint spawnPoint = FindObjectOfType<SpawnPoint>();
+        if (spawnPoint == null)
         {
-            GameManager.Instance.SpawnCharacter(spawnPoint.position, spawnPoint.rotation);
+            Debug.LogWarning("SpawnPointがシーンにありません！");
+            return;
+        }
+
+        // すでにキャラが存在するなら位置を合わせる
+        if (GameManager.Instance.currentCharacter != null)
+        {
+            GameManager.Instance.currentCharacter.transform.position = spawnPoint.transform.position;
+            GameManager.Instance.currentCharacter.transform.rotation = spawnPoint.transform.rotation;
         }
         else
         {
-            // 既存のキャラをリスポーン地点に移動
-            GameManager.Instance.currentCharacter.transform.position = spawnPoint.position;
-            GameManager.Instance.currentCharacter.transform.rotation = spawnPoint.rotation;
+            // キャラがいないなら新しくSpawn
+            GameManager.Instance.SpawnCharacter(spawnPoint.transform.position, spawnPoint.transform.rotation);
         }
     }
 }

@@ -18,11 +18,13 @@ public class PauseMenuUI : MonoBehaviour
             //メニューを開いている間ポーズ
             if (pausemenuUIInstance == null)
             {
+                //メニューを開く
                 pausemenuUIInstance = Instantiate(pausemenuUIPrefab);
                 Time.timeScale = 0f; //ゲーム停止
             }
             else
             {
+                //メニューを閉じる
                 Destroy(pausemenuUIInstance);
                 Time.timeScale = 1f; //ゲーム再開
             }
