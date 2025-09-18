@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Usagi_Scene/Company_Scene.unity
     guid: babdb5ba39e01cf4aa00318374477bd5
   - enabled: 1
+    path: Assets/Scenes/Usagi_Scene/Maid_Scene.unity
+    guid: cbd70a4d9426e334186c29a85f0108f3
+  - enabled: 1
     path: Assets/Scenes/Usagi_Scene/Pizza1_Scene.unity
     guid: 64ac0aa2c77be7d46a7f38c203af90ed
   m_configObjects: {}

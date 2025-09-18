@@ -11,6 +11,7 @@ public class back : MonoBehaviour
     private bool isTouchingTemple = false;
     private bool isTouchingPizza1 = false;
     private bool isTouchingofice = false;
+    private bool isTouchingmeid = false;
 
     void OnTriggerEnter(Collider other)
     {
@@ -45,6 +46,12 @@ public class back : MonoBehaviour
         {
             isTouchingofice = true;
         }
+
+        if (other.CompareTag("meid"))
+        {
+            isTouchingmeid = true;
+        }
+
 
 
     }
@@ -85,38 +92,49 @@ public class back : MonoBehaviour
 
         }
 
+        if (other.CompareTag("meid"))
+        {
+            isTouchingmeid = false;
+
+        }
+
     }
 
-        void Update()
+    void Update()
+    {
+        if (isTouchingShop && Input.GetKeyDown(KeyCode.Space))
         {
-            if (isTouchingShop && Input.GetKeyDown(KeyCode.Space))
-            {
-                SceneManager.LoadScene("Usagi_Scene");
-            }
-
-            if (isTouchingVinyl && Input.GetKeyDown(KeyCode.Space))
-            {
-                SceneManager.LoadScene("Usagi_Scene");
-            }
-
-            if (isTouchingBar && Input.GetKeyDown(KeyCode.Space))
-            {
-                SceneManager.LoadScene("Usagi_Scene");
-            }
-
-            if (isTouchingTemple && Input.GetKeyDown(KeyCode.Space))
-            {
-                SceneManager.LoadScene("Usagi_Scene");
-            }
-
-            if (isTouchingPizza1 && Input.GetKeyDown(KeyCode.Space))
-            {
-                SceneManager.LoadScene("Usagi_Scene");
-            }
-
-            if (isTouchingofice && Input.GetKeyDown(KeyCode.Space))
-            {
-                SceneManager.LoadScene("Usagi_Scene");
-            }
+            SceneManager.LoadScene("Usagi_Scene");
         }
+
+        if (isTouchingVinyl && Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene("Usagi_Scene");
+        }
+
+        if (isTouchingBar && Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene("Usagi_Scene");
+        }
+
+        if (isTouchingTemple && Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene("Usagi_Scene");
+        }
+
+        if (isTouchingPizza1 && Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene("Usagi_Scene");
+        }
+
+        if (isTouchingofice && Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene("Usagi_Scene");
+        }
+
+        if (isTouchingmeid && Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene("Usagi_Scene");
+        }
+    }
 }

@@ -9,6 +9,7 @@ public class Move : MonoBehaviour
     private bool isTouchingTemple = false;
     private bool isTouchingPizza1 = false;
     private bool isTouchingOfice = false;
+    private bool isTouchingmeid = false;
 
     void OnTriggerEnter(Collider other)
     {
@@ -45,6 +46,11 @@ public class Move : MonoBehaviour
             isTouchingOfice = true;
         }
 
+        if (other.CompareTag("meid"))
+        {
+            isTouchingmeid = true;
+        }
+
 
     }
 
@@ -78,6 +84,11 @@ public class Move : MonoBehaviour
         if (other.CompareTag("Ofice"))
         {
             isTouchingOfice = false;
+        }
+
+        if (other.CompareTag("meid"))
+        {
+            isTouchingmeid = false;
         }
     }
 
@@ -123,6 +134,13 @@ public class Move : MonoBehaviour
             Debug.Log("•Û‘¶‚·‚éˆÊ’u: " + transform.position);
             PositionMemory.SavePosition(transform.position);
             SceneManager.LoadScene("Company_Scene");
+        }
+
+        if (isTouchingmeid && Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("•Û‘¶‚·‚éˆÊ’u: " + transform.position);
+            PositionMemory.SavePosition(transform.position);
+            SceneManager.LoadScene("Maid_Scene");
         }
     }
 }

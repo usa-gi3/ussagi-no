@@ -16,6 +16,7 @@ TagManager:
   - ofice2
   - ofice1
   - ofice
+  - meid
   layers:
   - Default
   - TransparentFX
