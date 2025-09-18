@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Usagi_Scene/Pizza1_Scene.unity
     guid: 64ac0aa2c77be7d46a7f38c203af90ed
+  - enabled: 1
+    path: Assets/Scenes/start Scene.unity
+    guid: ac97e45fa05086a449923c1ec0834ee6
   m_configObjects: {}

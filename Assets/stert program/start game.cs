@@ -15,6 +15,6 @@ public class startgame : MonoBehaviour
     public void OnClick()
     {
        //if(Input.GetKey(KeyCode.Space))
-       SceneManager.LoadScene("SampleScene");
+       SceneManager.LoadScene("Usagi_Scene");
     }
 }

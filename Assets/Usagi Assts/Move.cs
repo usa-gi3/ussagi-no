@@ -75,7 +75,7 @@ public class Move : MonoBehaviour
             isTouchingPizza1 = false;
         }
 
-        if (other.CompareTag("Ofice"))
+        if (other.CompareTag("ofice"))
         {
             isTouchingOfice = false;
         }
