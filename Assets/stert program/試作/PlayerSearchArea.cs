@@ -21,7 +21,7 @@ public class PlayerSearchArea : MonoBehaviour
             if (hit.TryGetComponent<InvisibleObject>(out var obj))
             {
                 float distance = (transform.position - hit.transform.position).magnitude;
-                float alpha = Mathf.Clamp(1 - distance / areaRadius, 0.2f, 1f);
+                float alpha = Mathf.Clamp(1 - distance / areaRadius, 0.5f, 1f);
                 obj.SetVisibility(true, alpha);
 
                 // ¡‰ñ‚Ì”ÍˆÍ“à‚É‚¢‚é‚Ì‚ÅƒZƒbƒg
