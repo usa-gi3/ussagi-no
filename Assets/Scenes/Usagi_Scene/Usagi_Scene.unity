@@ -26107,9 +26107,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 60834811}
-<<<<<<< HEAD
-  m_LocalEulerAnglesHint: {x: 32.179, y: 2.9, z: 2.141}
-=======
   m_LocalEulerAnglesHint: {x: 41.19, y: 2.9, z: 0}
 --- !u!114 &1217599349
 MonoBehaviour:
@@ -26124,7 +26121,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausemenuUIPrefab: {fileID: 7698700503410327237, guid: 0244275c95c55084481d2076404d7d3c, type: 3}
->>>>>>> pika
 --- !u!4 &1219754548 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3091595897320273409, guid: d1a1800cee8659c4d838a33e6bc8e4d1, type: 3}
@@ -46689,13 +46685,7 @@ SceneRoots:
   - {fileID: 1499434474}
   - {fileID: 86660059}
   - {fileID: 1558702986}
-<<<<<<< HEAD
   - {fileID: 1212050739}
   - {fileID: 1898778652}
   - {fileID: 130888065}
   - {fileID: 1143297151}
-=======
-  - {fileID: 105619481}
-  - {fileID: 24744955}
-  - {fileID: 426379430}
->>>>>>> pika
