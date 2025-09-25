@@ -456,7 +456,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7523633852681859982}
+      - m_Target: {fileID: 7816576410406695511}
         m_TargetAssemblyTypeName: Setting, Assembly-CSharp
         m_MethodName: OnBackButton
         m_Mode: 1
@@ -1169,6 +1169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7614599782725592437}
+  - component: {fileID: 7997224062088838833}
   m_Layer: 0
   m_Name: SettingUI
   m_TagString: Untagged
@@ -1191,9 +1192,21 @@ Transform:
   m_Children:
   - {fileID: 5172462908882724612}
   - {fileID: 5024193842425121051}
-  - {fileID: 821101393979888536}
+  - {fileID: 5460124732712533048}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7997224062088838833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4782312658253098256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce6508fa300eb474f8714f0dbbd07505, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4815910704653887839
 GameObject:
   m_ObjectHideFlags: 0
@@ -1728,7 +1741,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1001 &3545782426098763679
+--- !u!1001 &8184808028213143615
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1736,6 +1749,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7614599782725592437}
     m_Modifications:
+    - target: {fileID: -7067193048625194392, guid: cf63cf24432d21d43943324081e1bf23, type: 3}
+      propertyPath: settingUIPrefab
+      value: 
+      objectReference: {fileID: 4782312658253098256}
     - target: {fileID: 4201863995374654471, guid: cf63cf24432d21d43943324081e1bf23, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1776,10 +1793,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6439152907589006353, guid: cf63cf24432d21d43943324081e1bf23, type: 3}
-      propertyPath: settingUIPrefab
-      value: 
-      objectReference: {fileID: 4782312658253098256}
     - target: {fileID: 9136379732835851688, guid: cf63cf24432d21d43943324081e1bf23, type: 3}
       propertyPath: m_Name
       value: SettingController
@@ -1789,15 +1802,15 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf63cf24432d21d43943324081e1bf23, type: 3}
---- !u!4 &821101393979888536 stripped
+--- !u!4 &5460124732712533048 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4201863995374654471, guid: cf63cf24432d21d43943324081e1bf23, type: 3}
-  m_PrefabInstance: {fileID: 3545782426098763679}
+  m_PrefabInstance: {fileID: 8184808028213143615}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7523633852681859982 stripped
+--- !u!114 &7816576410406695511 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6439152907589006353, guid: cf63cf24432d21d43943324081e1bf23, type: 3}
-  m_PrefabInstance: {fileID: 3545782426098763679}
+  m_CorrespondingSourceObject: {fileID: -7067193048625194392, guid: cf63cf24432d21d43943324081e1bf23, type: 3}
+  m_PrefabInstance: {fileID: 8184808028213143615}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1

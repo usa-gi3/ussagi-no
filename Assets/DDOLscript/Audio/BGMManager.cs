@@ -6,18 +6,27 @@ using UnityEngine.SceneManagement;
 
 public class BGMManager : MonoBehaviour
 {
-    [SerializeField] private string volumeKey = "BGMVolume"; // シーンごとにユニークなキーを設定
+    //[SerializeField] private string volumeKey = "BGMVolume"; // シーンごとにユニークなキーを設定
     [SerializeField] private AudioSource bgmSource;
+    private static BGMManager instance;
 
-    [SerializeField] private GameObject settingsUIPrefab; //設定画面UIプレハブ
-    private GameObject settingsUIInstance;
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject); // 二重生成防止
+            return;
+        }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
 
-    private Slider volumeSlider;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
 
-    void Start()
+    private void Start()
     {
         // 保存された音量をロードして反映
-        float savedVolume = PlayerPrefs.GetFloat(volumeKey, 1f);
+        float savedVolume = PlayerPrefs.GetFloat("BGMVolume", 1f);
         bgmSource.volume = savedVolume;
         if (!bgmSource.isPlaying)   // まだ流れていなければ再生
         {
@@ -25,42 +34,34 @@ public class BGMManager : MonoBehaviour
         }
     }
 
-    // 設定ボタンから呼ぶ
-    public void ToggleSettings()
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (settingsUIInstance == null)
+        // シーン名に応じて BGM 切り替え
+        AudioClip newClip = Resources.Load<AudioClip>($"BGM/{scene.name}");
+        if (newClip != null && bgmSource.clip != newClip)
         {
-            // 設定画面を生成
-            settingsUIInstance = Instantiate(settingsUIPrefab);
-
-            // スライダーを探す
-            volumeSlider = settingsUIInstance.transform.Find("Canvas/Setting/BGMVolumeSlider").GetComponent<Slider>();
-
-            // 保存値を反映
-            float savedVolume = PlayerPrefs.GetFloat(volumeKey, 1f);
-            volumeSlider.value = savedVolume;
-
-            // 値が変わったときに反映
-            volumeSlider.onValueChanged.RemoveAllListeners();
-            volumeSlider.onValueChanged.AddListener(SetVolume);
-
-
-            // 戻るボタンを探してイベント登録
-            Button backButton = settingsUIInstance.transform.Find("Canvas/Setting/Button").GetComponent<Button>();
-            backButton.onClick.AddListener(CloseSettings);
-        }
-        else
-        {
-            CloseSettings();
+            bgmSource.clip = newClip;
+            bgmSource.Play();
         }
     }
 
-    private void CloseSettings()
+    // Setting.cs から呼ばれる
+    public void RegisterSettingUI(GameObject settingUIInstance)
     {
-        if (settingsUIInstance != null)
+        // スライダーを探す
+        //Slider slider = settingUIInstance.transform.Find("SettingUI/Canvas/Setting/BGMVolumeSlider")?.GetComponent<Slider>();
+        // 子階層からスライダーを探す（非アクティブでも検索）
+        Slider slider = settingUIInstance.GetComponentInChildren<Slider>(true);
+
+        if (slider != null)
         {
-            Destroy(settingsUIInstance);
-            settingsUIInstance = null;
+            slider.value = bgmSource.volume;
+            slider.onValueChanged.RemoveAllListeners();
+            slider.onValueChanged.AddListener(SetVolume);
+        }
+        else
+        {
+            Debug.LogError("BGMVolumeSlider が見つかりませんでした");
         }
     }
 
@@ -68,7 +69,7 @@ public class BGMManager : MonoBehaviour
     {
         Debug.Log("SetVolume: " + value);
         bgmSource.volume = value;
-        PlayerPrefs.SetFloat(volumeKey, value);
+        PlayerPrefs.SetFloat("BGMVolume", value);
     }
 }
 

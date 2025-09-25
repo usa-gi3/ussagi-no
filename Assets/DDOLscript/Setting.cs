@@ -31,49 +31,31 @@ public class Setting : MonoBehaviour
             return;
         }
 
-        // PausemenuUI 内の Canvas を探す
-        Canvas parentCanvas = GetComponentInChildren<Canvas>();
-        if (parentCanvas == null)
-        {
-            Debug.LogError("PausemenuUI 内に Canvas が見つかりません");
-            return;
-        }
-
-        // 設定画面は独自の Canvas を持っているので、ルートに直接生成する
+        // 設定画面をルートに生成
         settingUIInstance = Instantiate(settingUIPrefab);
 
-        // 他のUIより手前に出すための設定
+        // Canvas の設定（PauseMenu より前に表示）
         Canvas canvas = settingUIInstance.GetComponent<Canvas>();
         if (canvas != null)
         {
             canvas.overrideSorting = true;
-            canvas.sortingOrder = 100; // PauseMenu より手前に表示
+            canvas.sortingOrder = 100; // PauseMenuより上に表示
         }
 
         Debug.Log("設定画面を開きました");
-    }
 
-    // デバッグ用：オブジェクトの階層を表示
-    /*void LogHierarchy(Transform parent, int depth)
-    {
-        string indent = new string(' ', depth * 2);
-        GameObject obj = parent.gameObject;
-        Debug.Log($"{indent}- {obj.name} (Active: {obj.activeInHierarchy})");
-
-        for (int i = 0; i < parent.childCount; i++)
+        // === ここで BGMManager に通知して Slider を初期化 ===
+        BGMManager bgmManager = FindObjectOfType<BGMManager>();
+        if (bgmManager != null)
         {
-            LogHierarchy(parent.GetChild(i), depth + 1);
+            bgmManager.RegisterSettingUI(settingUIInstance);
         }
-    }*/
+    }
 
     public void OnBackButton()
     {
         // 戻るボタンで非表示（削除）
         Debug.Log("戻るボタンが押されました");
-        if (settingUIInstance != null)
-        {
-            Destroy(settingUIInstance);
-            settingUIInstance = null;
-        }
+        Destroy(gameObject.transform.root.gameObject);
     }
 }

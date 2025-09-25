@@ -1105,7 +1105,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7383409730851328562}
+      - m_Target: {fileID: 2506000504008457291}
         m_TargetAssemblyTypeName: Setting, Assembly-CSharp
         m_MethodName: setting_botton
         m_Mode: 1
@@ -1281,9 +1281,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4201863995374654471, guid: cf63cf24432d21d43943324081e1bf23, type: 3}
   m_PrefabInstance: {fileID: 4551823605830936099}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7383409730851328562 stripped
+--- !u!114 &2506000504008457291 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6439152907589006353, guid: cf63cf24432d21d43943324081e1bf23, type: 3}
+  m_CorrespondingSourceObject: {fileID: -7067193048625194392, guid: cf63cf24432d21d43943324081e1bf23, type: 3}
   m_PrefabInstance: {fileID: 4551823605830936099}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
