@@ -13,28 +13,49 @@ public class Setting : MonoBehaviour
 
     public void setting_botton()
     {
-        if (settingUIInstance == null)
-        {
-            // インスタンスが存在しなければ生成して表示
-            settingUIInstance = Instantiate(settingUIPrefab);
+        Debug.Log("=== Setting.setting_botton()が呼ばれました！ ===");
 
-            // ボタンを探してOnClick登録
-            Button backButton = settingUIInstance.transform.Find("Setting/Button").GetComponent<Button>();
-            backButton.onClick.AddListener(OnBackButton);
-        }
-        else
+        // すでに開いていたら閉じる
+        // settingUIInstanceの確認
+        if (settingUIInstance != null)
         {
-            // インスタンスが存在すれば削除（非表示）
             Destroy(settingUIInstance);
+            settingUIInstance = null;
+            return;
+        }
+
+        // Prefabの確認
+        if (settingUIPrefab == null)
+        {
+            Debug.LogError("settingUIPrefab が設定されていません");
+            return;
+        }
+
+        // 設定画面をルートに生成
+        settingUIInstance = Instantiate(settingUIPrefab);
+
+        // Canvas の設定（PauseMenu より前に表示）
+        Canvas canvas = settingUIInstance.GetComponent<Canvas>();
+        if (canvas != null)
+        {
+            canvas.overrideSorting = true;
+            canvas.sortingOrder = 100; // PauseMenuより上に表示
+        }
+
+        Debug.Log("設定画面を開きました");
+
+        // === ここで BGMManager に通知して Slider を初期化 ===
+        BGMManager bgmManager = FindObjectOfType<BGMManager>();
+        if (bgmManager != null)
+        {
+            bgmManager.RegisterSettingUI(settingUIInstance);
         }
     }
 
     public void OnBackButton()
     {
         // 戻るボタンで非表示（削除）
-        if (settingUIInstance != null)
-        {
-            Destroy(settingUIInstance);
-        }
+        Debug.Log("戻るボタンが押されました");
+        Destroy(gameObject.transform.root.gameObject);
     }
 }

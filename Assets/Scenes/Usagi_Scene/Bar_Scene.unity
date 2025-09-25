@@ -37750,6 +37750,7 @@ GameObject:
   - component: {fileID: 1921953948}
   - component: {fileID: 1921953947}
   - component: {fileID: 1921953946}
+  - component: {fileID: 1921953949}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -37807,6 +37808,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1921953949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921953945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9beeb6bbefd350145852478a5870afe9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeKey: BGMVolume
+  bgmSource: {fileID: 1503945500}
+  settingsUIPrefab: {fileID: 4782312658253098256, guid: c1879d2d4185e224fa2ad1296dfe5df4, type: 3}
 --- !u!4 &1923444719 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c05e831c1a7cd42409777f8defe5b330, type: 3}
