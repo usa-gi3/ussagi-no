@@ -7,9 +7,9 @@ using TMPro;
 public class talknpc : MonoBehaviour
 {
     public GameObject dialogueUI; // Canvas内の会話UIをセット
-    public TMP_Text dialogueText;     // セリフ表示用Text (TextMeshProならTMP_Textに変更)
-    public string[] messages;     // NPCのセリフ一覧
-    public GameObject player;   //プレイヤー
+    public TMP_Text dialogueText; // セリフ表示用Text (TextMeshProならTMP_Textに変更)
+    public string[] messages; // NPCのセリフ一覧
+    public GameObject player; //プレイヤー
 
     private bool playerInRange = false;
     private int messageIndex = 0;
@@ -20,7 +20,6 @@ public class talknpc : MonoBehaviour
         dialogueUI.SetActive(false); // ゲーム開始時に枠を消す
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
@@ -53,7 +52,6 @@ public class talknpc : MonoBehaviour
             EndDialogue();
         }
     }
-
     void StartDialogue()
     {
         isTalking = true;
@@ -62,7 +60,7 @@ public class talknpc : MonoBehaviour
         dialogueText.text = messages[messageIndex];
 
         // 会話中はプレイヤーの動きを止める
-        player.GetComponent<PlayerController>().enabled = false;
+        isTalking = true; messageIndex = 0; dialogueUI.SetActive(true); dialogueText.text = messages[messageIndex];
     }
 
     void NextMessage()
