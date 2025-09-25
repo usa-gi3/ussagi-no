@@ -6,7 +6,6 @@ using UnityEngine;
 public class talknpcmain : MonoBehaviour
 {
     public GameObject dialogueUI;     // Canvas内の会話UI
-    public TMP_Text dialogueNameText; // 名前表示用（Speaker）
     public TMP_Text dialogueText;     // セリフ表示用
     public GameObject player;
 
@@ -17,8 +16,7 @@ public class talknpcmain : MonoBehaviour
     // セリフデータ
     [System.Serializable]
     public class DialogueLine
-    {
-        public string Speaker;
+    {        
         public string Text;
     }
 
@@ -73,7 +71,6 @@ public class talknpcmain : MonoBehaviour
             if (string.IsNullOrWhiteSpace(lines[i])) continue;
             string[] values = lines[i].Split(',');
             DialogueLine line = new DialogueLine();
-            line.Speaker = values[0];
             line.Text = values[1];
             messages.Add(line);
         }
@@ -85,7 +82,13 @@ public class talknpcmain : MonoBehaviour
         messageIndex = 0;
         dialogueUI.SetActive(true);
         ShowMessage();
-        player.GetComponent<PlayerController>().enabled = false;
+
+        // 会話中はプレイヤーの動きを止める
+        var pc = player.GetComponent<PlayerController>();
+        if (pc != null) pc.enabled = false;
+
+        var myPc = player.GetComponent<MyPlayerController>();
+        if (myPc != null) myPc.enabled = false;
     }
 
     void NextMessage()
@@ -99,7 +102,6 @@ public class talknpcmain : MonoBehaviour
 
     void ShowMessage()
     {
-        dialogueNameText.text = messages[messageIndex].Speaker;
         dialogueText.text = messages[messageIndex].Text;
     }
 
@@ -107,6 +109,12 @@ public class talknpcmain : MonoBehaviour
     {
         isTalking = false;
         dialogueUI.SetActive(false);
-        player.GetComponent<PlayerController>().enabled = true;
+
+        // 会話終了したら動きを戻す
+        var pc = player.GetComponent<PlayerController>();
+        if (pc != null) pc.enabled = true;
+
+        var myPc = player.GetComponent<MyPlayerController>();
+        if (myPc != null) myPc.enabled = true;
     }
 }
