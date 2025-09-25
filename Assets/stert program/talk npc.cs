@@ -11,6 +11,9 @@ public class talknpc : MonoBehaviour
     public string[] messages; // NPCのセリフ一覧
     public GameObject player; //プレイヤー
 
+    [SerializeField] private GameObject talkMark; // 会話可能マーク
+    [SerializeField] private Camera mainCamera;   // メインカメラ
+
     private bool playerInRange = false;
     private int messageIndex = 0;
     private bool isTalking = false;
@@ -18,6 +21,7 @@ public class talknpc : MonoBehaviour
     void Start()
     {
         dialogueUI.SetActive(false); // ゲーム開始時に枠を消す
+        if (talkMark != null) talkMark.SetActive(false);//マークを非表示に
     }
 
     void Update()
@@ -34,12 +38,21 @@ public class talknpc : MonoBehaviour
             }
         }
     }
+    private void LateUpdate()
+    {
+        // マークをカメラの方向に向ける
+        if (talkMark != null && talkMark.activeSelf)
+        {
+            talkMark.transform.LookAt(talkMark.transform.position + mainCamera.transform.forward);
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
+            if (talkMark != null) talkMark.SetActive(true); // 範囲に入ったらマーク表示
             Debug.Log("判定入った");
         }
     }
@@ -49,6 +62,7 @@ public class talknpc : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+            if (talkMark != null) talkMark.SetActive(false); // 範囲から出たら非表示
             EndDialogue();
         }
     }
