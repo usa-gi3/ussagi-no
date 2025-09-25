@@ -49,11 +49,11 @@ public class PauseMenuUI : MonoBehaviour
         menuButtons.AddRange(buttons);
 
         // ★ デバッグ追加: どんなボタンがあるか確認
-        Debug.Log($"見つかったボタンの数: {buttons.Length}");
+        //Debug.Log($"見つかったボタンの数: {buttons.Length}");
         foreach (Button btn in buttons)
         {
-            Debug.Log($"ボタン名: {btn.name}");
-            Debug.Log($"  OnClickイベント数: {btn.onClick.GetPersistentEventCount()}");
+            //Debug.Log($"ボタン名: {btn.name}");
+            //Debug.Log($"  OnClickイベント数: {btn.onClick.GetPersistentEventCount()}");
         }
 
         if (menuButtons.Count > 0)
@@ -84,28 +84,28 @@ public class PauseMenuUI : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log($"エンターキーが押されました！現在のインデックス: {currentSelectedIndex}");
+            //Debug.Log($"エンターキーが押されました！現在のインデックス: {currentSelectedIndex}");
 
             if (currentSelectedIndex < menuButtons.Count)
             {
                 Button selectedButton = menuButtons[currentSelectedIndex];
-                Debug.Log($"選択されたボタン: {selectedButton.name}");
-                Debug.Log($"OnClickイベント数: {selectedButton.onClick.GetPersistentEventCount()}");
+                //Debug.Log($"選択されたボタン: {selectedButton.name}");
+                //Debug.Log($"OnClickイベント数: {selectedButton.onClick.GetPersistentEventCount()}");
 
                 // OnClickイベントの詳細情報を表示
                 for (int i = 0; i < selectedButton.onClick.GetPersistentEventCount(); i++)
                 {
-                    Debug.Log($"  イベント{i}: {selectedButton.onClick.GetPersistentTarget(i)?.name}.{selectedButton.onClick.GetPersistentMethodName(i)}");
+                    //Debug.Log($"  イベント{i}: {selectedButton.onClick.GetPersistentTarget(i)?.name}.{selectedButton.onClick.GetPersistentMethodName(i)}");
                 }
 
                 // ★ 設定ボタンの特別処理を削除して、onClick.Invoke()のみ実行
-                Debug.Log("onClick.Invoke()を実行します");
+                //Debug.Log("onClick.Invoke()を実行します");
                 selectedButton.onClick.Invoke();
-                Debug.Log("onClick.Invoke()完了");
+                //Debug.Log("onClick.Invoke()完了");
             }
             else
             {
-                Debug.LogError("選択インデックスが範囲外です");
+                //Debug.LogError("選択インデックスが範囲外です");
             }
         }
     }
@@ -136,7 +136,7 @@ public class PauseMenuUI : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(menuButtons[currentSelectedIndex].gameObject);
 
         // ★ デバッグ追加: 現在選択されているボタンを表示
-        Debug.Log($"現在選択中: {menuButtons[currentSelectedIndex].name} (インデックス: {currentSelectedIndex})");
+        //Debug.Log($"現在選択中: {menuButtons[currentSelectedIndex].name} (インデックス: {currentSelectedIndex})");
     }
 
     // UIボタンから呼ぶ

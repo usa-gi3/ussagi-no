@@ -49,8 +49,6 @@ public class BGMManager : MonoBehaviour
     public void RegisterSettingUI(GameObject settingUIInstance)
     {
         // スライダーを探す
-        //Slider slider = settingUIInstance.transform.Find("SettingUI/Canvas/Setting/BGMVolumeSlider")?.GetComponent<Slider>();
-        // 子階層からスライダーを探す（非アクティブでも検索）
         Slider slider = settingUIInstance.GetComponentInChildren<Slider>(true);
 
         if (slider != null)
@@ -61,13 +59,13 @@ public class BGMManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("BGMVolumeSlider が見つかりませんでした");
+            //Debug.LogError("BGMVolumeSlider が見つかりませんでした");
         }
     }
 
     public void SetVolume(float value)
     {
-        Debug.Log("SetVolume: " + value);
+        //Debug.Log("SetVolume: " + value);
         bgmSource.volume = value;
         PlayerPrefs.SetFloat("BGMVolume", value);
     }

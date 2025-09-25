@@ -13,7 +13,7 @@ public class Setting : MonoBehaviour
 
     public void setting_botton()
     {
-        Debug.Log("=== Setting.setting_botton()が呼ばれました！ ===");
+        //Debug.Log("=== Setting.setting_botton()が呼ばれました！ ===");
 
         // すでに開いていたら閉じる
         // settingUIInstanceの確認
@@ -27,7 +27,7 @@ public class Setting : MonoBehaviour
         // Prefabの確認
         if (settingUIPrefab == null)
         {
-            Debug.LogError("settingUIPrefab が設定されていません");
+            //Debug.LogError("settingUIPrefab が設定されていません");
             return;
         }
 
@@ -42,7 +42,7 @@ public class Setting : MonoBehaviour
             canvas.sortingOrder = 100; // PauseMenuより上に表示
         }
 
-        Debug.Log("設定画面を開きました");
+        //Debug.Log("設定画面を開きました");
 
         // === ここで BGMManager に通知して Slider を初期化 ===
         BGMManager bgmManager = FindObjectOfType<BGMManager>();
@@ -55,7 +55,7 @@ public class Setting : MonoBehaviour
     public void OnBackButton()
     {
         // 戻るボタンで非表示（削除）
-        Debug.Log("戻るボタンが押されました");
+        //Debug.Log("戻るボタンが押されました");
         Destroy(gameObject.transform.root.gameObject);
     }
 }
