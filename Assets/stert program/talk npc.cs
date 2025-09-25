@@ -74,7 +74,11 @@ public class talknpc : MonoBehaviour
         dialogueText.text = messages[messageIndex];
 
         // 会話中はプレイヤーの動きを止める
-        isTalking = true; messageIndex = 0; dialogueUI.SetActive(true); dialogueText.text = messages[messageIndex];
+        var pc = player.GetComponent<PlayerController>();
+        if (pc != null) pc.enabled = false;
+
+        var myPc = player.GetComponent<MyPlayerController>();
+        if (myPc != null) myPc.enabled = false;
     }
 
     void NextMessage()
@@ -96,6 +100,10 @@ public class talknpc : MonoBehaviour
         dialogueUI.SetActive(false);
 
         // 会話終了したら動きを戻す
-        player.GetComponent<PlayerController>().enabled = true;
+        var pc = player.GetComponent<PlayerController>();
+        if (pc != null) pc.enabled = true;
+
+        var myPc = player.GetComponent<MyPlayerController>();
+        if (myPc != null) myPc.enabled = true;
     }
 }
