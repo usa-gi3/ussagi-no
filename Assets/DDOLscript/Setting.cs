@@ -21,6 +21,8 @@ public class Setting : MonoBehaviour
         {
             Destroy(settingUIInstance);
             settingUIInstance = null;
+            // ★ 設定画面を閉じる時にポーズメニューを再有効化
+            EnablePauseMenu();
             return;
         }
 
@@ -30,6 +32,9 @@ public class Setting : MonoBehaviour
             //Debug.LogError("settingUIPrefab が設定されていません");
             return;
         }
+
+        // ★ 設定画面を開く前にポーズメニューを無効化
+        DisablePauseMenu();
 
         // 設定画面をルートに生成
         settingUIInstance = Instantiate(settingUIPrefab);
@@ -57,5 +62,25 @@ public class Setting : MonoBehaviour
         // 戻るボタンで非表示（削除）
         //Debug.Log("戻るボタンが押されました");
         Destroy(gameObject.transform.root.gameObject);
+    }
+
+    // ★ ポーズメニューを無効化する関数
+    private void DisablePauseMenu()
+    {
+        PauseMenuUI pauseMenuUI = FindObjectOfType<PauseMenuUI>();
+        if (pauseMenuUI != null)
+        {
+            pauseMenuUI.enabled = false; // スクリプト自体を無効化
+        }
+    }
+
+    // ★ ポーズメニューを有効化する関数
+    private void EnablePauseMenu()
+    {
+        PauseMenuUI pauseMenuUI = FindObjectOfType<PauseMenuUI>();
+        if (pauseMenuUI != null)
+        {
+            pauseMenuUI.enabled = true; // スクリプトを有効化
+        }
     }
 }
