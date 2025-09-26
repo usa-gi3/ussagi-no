@@ -1501,7 +1501,7 @@ GameObject:
   - component: {fileID: 1843640994}
   m_Layer: 0
   m_Name: Directional Light
-  m_TagString: Untagged
+  m_TagString: BGMSource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2166,9 +2166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9beeb6bbefd350145852478a5870afe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeKey: BGMVolume
   bgmSource: {fileID: 1843640994}
-  settingsUIPrefab: {fileID: 4782312658253098256, guid: c1879d2d4185e224fa2ad1296dfe5df4, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
