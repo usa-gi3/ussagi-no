@@ -60,6 +60,8 @@ public class Setting : MonoBehaviour
     public void OnBackButton()
     {
         // 戻るボタンで非表示（削除）
+        // ★ メニューを再有効化
+        EnablePauseMenu();
         //Debug.Log("戻るボタンが押されました");
         Destroy(gameObject.transform.root.gameObject);
     }
