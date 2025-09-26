@@ -25,25 +25,6 @@ public class See : MonoBehaviour
         // 保存されていた感度を読み込む
         Xsensityvity = PlayerPrefs.GetFloat("X_Sensitivity", Xsensityvity);
         Ysensityvity = PlayerPrefs.GetFloat("Y_Sensitivity", Ysensityvity);
-
-        //スライダーを探す
-        Slider[] sliders = settingUIInstance.GetComponentsInChildren<Slider>(true); // true で非アクティブも探す
-
-        foreach (var slider in sliders)
-        {
-            if (slider.name == "xSlider") // プレハブ内の名前で判別
-            {
-                slider.value = Xsensityvity;
-                slider.onValueChanged.RemoveAllListeners();
-                slider.onValueChanged.AddListener(SetX);
-            }
-            else if (slider.name == "ySlider")
-            {
-                slider.value = Ysensityvity;
-                slider.onValueChanged.RemoveAllListeners();
-                slider.onValueChanged.AddListener(SetY);
-            }
-        }
     }
 
     void Update()
