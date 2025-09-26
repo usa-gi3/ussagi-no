@@ -27971,7 +27971,7 @@ GameObject:
   - component: {fileID: 1503945500}
   m_Layer: 0
   m_Name: Directional Light
-  m_TagString: Untagged
+  m_TagString: BGMSource
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28062,7 +28062,7 @@ AudioSource:
   m_GameObject: {fileID: 1503945497}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 30281539860831971, guid: a406c762c255fd84884fd444b41b1ccd, type: 2}
   m_audioClip: {fileID: 8300000, guid: 4696cc2d78e39194bb1305475f6ccdc2, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1

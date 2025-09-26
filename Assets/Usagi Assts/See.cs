@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class See : MonoBehaviour
 {
     public GameObject cam;
     public float Xsensityvity = 3f; // 上下感度
     public float Ysensityvity = 3f; // 左右感度
+
+    public GameObject settingUIInstance;
 
     Quaternion cameraRot, characterRot;
     bool cursorLock = true;
@@ -18,6 +21,10 @@ public class See : MonoBehaviour
     {
         cameraRot = cam.transform.localRotation;
         characterRot = transform.localRotation;
+
+        // 保存されていた感度を読み込む
+        Xsensityvity = PlayerPrefs.GetFloat("X_Sensitivity", Xsensityvity);
+        Ysensityvity = PlayerPrefs.GetFloat("Y_Sensitivity", Ysensityvity);
     }
 
     void Update()
@@ -66,5 +73,23 @@ public class See : MonoBehaviour
         q.x = Mathf.Tan(angleX * Mathf.Deg2Rad * 0.5f);
 
         return q;
+    }
+
+    // --- スライダー用コールバック ---
+    public void SetX(float value)
+    {
+        Xsensityvity = value;
+        PlayerPrefs.SetFloat("X_Sensitivity", value);
+    }
+
+    public void SetY(float value)
+    {
+        Ysensityvity = value;
+        PlayerPrefs.SetFloat("Y_Sensitivity", value);
+    }
+
+    void OnDisable()
+    {
+        PlayerPrefs.Save(); // シーン遷移や設定画面閉じた時に保存
     }
 }

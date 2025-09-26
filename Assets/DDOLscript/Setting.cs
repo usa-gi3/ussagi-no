@@ -55,6 +55,13 @@ public class Setting : MonoBehaviour
         {
             bgmManager.RegisterSettingUI(settingUIInstance);
         }
+
+        // === ここで MouseSensitivityManager に通知して Slider を初期化 ===
+        MouseSensitivityManager mouseManager = FindObjectOfType<MouseSensitivityManager>();
+        if (mouseManager != null)
+        {
+            mouseManager.RegisterSettingUI(settingUIInstance);
+        }
     }
 
     public void OnBackButton()
@@ -62,6 +69,8 @@ public class Setting : MonoBehaviour
         // 戻るボタンで非表示（削除）
         // ★ メニューを再有効化
         EnablePauseMenu();
+        //セーブ
+        PlayerPrefs.Save();
         //Debug.Log("戻るボタンが押されました");
         Destroy(gameObject.transform.root.gameObject);
     }

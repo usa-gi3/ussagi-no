@@ -18,6 +18,7 @@ TagManager:
   - ofice
   - meid
   - point
+  - BGMSource
   layers:
   - Default
   - TransparentFX
