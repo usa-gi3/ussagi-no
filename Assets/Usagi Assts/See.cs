@@ -9,7 +9,6 @@ public class See : MonoBehaviour
     public float Ysensityvity = 3f; // ç∂âEä¥ìx
 
     Quaternion cameraRot, characterRot;
-    bool cursorLock = true;
 
     // è„â∫âÒì]ÇÃêßå¿
     float minX = -90f, maxX = 90f;
@@ -36,22 +35,8 @@ public class See : MonoBehaviour
         transform.localRotation = characterRot;
         cam.transform.localRotation = cameraRot;
 
-        UpdateCursorLock();
     }
 
-    void UpdateCursorLock()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            cursorLock = false;
-        }
-        else if (Input.GetMouseButton(0))
-        {
-            cursorLock = true;
-        }
-
-        Cursor.lockState = cursorLock ? CursorLockMode.Locked : CursorLockMode.None;
-    }
 
     // è„â∫ÇÃâÒì]Çêßå¿Ç∑ÇÈä÷êî
     Quaternion ClampRotation(Quaternion q)
