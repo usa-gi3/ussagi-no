@@ -11758,9 +11758,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e398ec2733753834384f4a0da3e2d7dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueUI: {fileID: 0}
-  dialogueText: {fileID: 0}
-  player: {fileID: 0}
+  dialogueUI: {fileID: 1440974226}
+  dialogueText: {fileID: 1866816257}
+  player: {fileID: 60834809}
 --- !u!1 &506760619 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cfeb70b946475864b96b386ed9e35e94, type: 3}
