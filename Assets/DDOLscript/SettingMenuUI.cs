@@ -76,8 +76,8 @@ public class SettingMenuUI : MonoBehaviour
                 ColorBlock colors = element.colors;
                 if (i == currentSelectedIndex)
                 {
-                    colors.normalColor = Color.yellow;
-                    colors.selectedColor = Color.yellow;
+                    colors.normalColor = new Color(0.85f, 0.85f, 0.85f, 1f); //íWÇ¢äDêF
+                    colors.selectedColor = new Color(0.85f, 0.85f, 0.85f, 1f);
                 }
                 else
                 {

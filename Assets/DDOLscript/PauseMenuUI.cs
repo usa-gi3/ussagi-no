@@ -119,8 +119,8 @@ public class PauseMenuUI : MonoBehaviour
             if (i == currentSelectedIndex)
             {
                 // 選択されたボタンの色を変更
-                colors.normalColor = Color.yellow;
-                colors.selectedColor = Color.yellow;
+                colors.normalColor = new Color(0.85f, 0.85f, 0.85f, 1f); //淡い灰色
+                colors.selectedColor = new Color(0.85f, 0.85f, 0.85f, 1f);
             }
             else
             {
