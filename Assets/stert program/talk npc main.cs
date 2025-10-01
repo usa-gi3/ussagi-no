@@ -16,8 +16,11 @@ public class talknpcmain : MonoBehaviour
     // セリフデータ
     [System.Serializable]
     public class DialogueLine
-    {        
+    {
+        public int EventID;
+        public int Progress;
         public string Text;
+        public string NextID;
     }
 
     private List<DialogueLine> messages = new List<DialogueLine>();
@@ -26,8 +29,8 @@ public class talknpcmain : MonoBehaviour
     {
         dialogueUI.SetActive(false);
 
-        // ★ CSVをロードしてこのNPC用のセリフを読み込む（例: npcname.csv）
-        LoadCSV("npcA_dialogue");
+        // CSVをロードしてこのNPC用のセリフを読み込む
+        LoadCSV("sinariodeta1-2");
     }
 
     void Update()
@@ -56,6 +59,9 @@ public class talknpcmain : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// CSV読み込み
+    /// </summary>
     void LoadCSV(string fileName)
     {
         TextAsset csvFile = Resources.Load<TextAsset>(fileName);
@@ -66,16 +72,39 @@ public class talknpcmain : MonoBehaviour
         }
 
         string[] lines = csvFile.text.Split('\n');
-        for (int i = 1; i < lines.Length; i++) // 1行目はヘッダ想定
+        for (int i = 1; i < lines.Length; i++) // 1行目はヘッダ
         {
             if (string.IsNullOrWhiteSpace(lines[i])) continue;
-            string[] values = lines[i].Split(',');
+
+            // ExcelのTSV保存ならタブ区切りに変える
+            string[] values = lines[i].Trim().Split(',');
+
+            if (values.Length < 3) continue;
+
             DialogueLine line = new DialogueLine();
-            line.Text = values[1];
+
+            if (int.TryParse(values[0].Trim(), out int eventId))
+                line.EventID = eventId;
+            else
+                continue;
+
+            if (int.TryParse(values[1].Trim(), out int progress))
+                line.Progress = progress;
+            else
+                continue;
+
+            line.Text = values[2].Trim();
+
+            if (values.Length > 3)
+                line.NextID = values[3].Trim();
+
             messages.Add(line);
         }
     }
 
+    /// <summary>
+    /// 会話開始
+    /// </summary>
     void StartDialogue()
     {
         isTalking = true;
@@ -83,7 +112,7 @@ public class talknpcmain : MonoBehaviour
         dialogueUI.SetActive(true);
         ShowMessage();
 
-        // 会話中はプレイヤーの動きを止める
+        // プレイヤーの操作を止める
         var pc = player.GetComponent<PlayerController>();
         if (pc != null) pc.enabled = false;
 
@@ -91,6 +120,9 @@ public class talknpcmain : MonoBehaviour
         if (myPc != null) myPc.enabled = false;
     }
 
+    /// <summary>
+    /// 次のメッセージへ
+    /// </summary>
     void NextMessage()
     {
         messageIndex++;
@@ -100,17 +132,79 @@ public class talknpcmain : MonoBehaviour
             EndDialogue();
     }
 
+    /// <summary>
+    /// セリフ表示
+    /// </summary>
     void ShowMessage()
     {
-        dialogueText.text = messages[messageIndex].Text;
+        if (messageIndex < 0 || messageIndex >= messages.Count)
+        {
+            Debug.LogError("無効な messageIndex: " + messageIndex);
+            EndDialogue();
+            return;
+        }
+
+        var line = messages[messageIndex];
+        dialogueText.text = line.Text;
+
+        if (!string.IsNullOrEmpty(line.NextID))
+        {
+            string[] next = line.NextID.Split(',');
+            if (next.Length == 1)
+            {
+                // Progress番号を探して自動遷移
+                if (int.TryParse(next[0], out int nextProgress))
+                {
+                    var nextLine = messages.Find(m => m.Progress == nextProgress);
+                    if (nextLine != null)
+                        messageIndex = messages.IndexOf(nextLine);
+                }
+            }
+            else
+            {
+                // 選択肢を表示
+                ShowChoices(next);
+            }
+        }
     }
 
+    /// <summary>
+    /// 選択肢を表示（今はログに出すだけ）
+    /// </summary>
+    void ShowChoices(string[] nextProgresses)
+    {
+        for (int i = 0; i < nextProgresses.Length; i++)
+        {
+            if (int.TryParse(nextProgresses[i], out int nextId))
+            {
+                string choiceText = messages.Find(m => m.Progress == nextId)?.Text;
+                Debug.Log($"選択肢 {i + 1}: {choiceText}");
+            }
+        }
+    }
+
+    /// <summary>
+    /// 選択肢を選んだとき
+    /// </summary>
+    void OnChoiceSelected(int chosenProgress)
+    {
+        var nextLine = messages.Find(m => m.Progress == chosenProgress);
+        if (nextLine != null)
+        {
+            messageIndex = messages.IndexOf(nextLine);
+            ShowMessage();
+        }
+    }
+
+    /// <summary>
+    /// 会話終了
+    /// </summary>
     void EndDialogue()
     {
         isTalking = false;
         dialogueUI.SetActive(false);
 
-        // 会話終了したら動きを戻す
+        // プレイヤーの操作を戻す
         var pc = player.GetComponent<PlayerController>();
         if (pc != null) pc.enabled = true;
 
