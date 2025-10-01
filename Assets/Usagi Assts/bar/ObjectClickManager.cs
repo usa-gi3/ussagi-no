@@ -1,10 +1,10 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System.Collections.Generic;
 
 public class ObjectClickManager : MonoBehaviour
 {
-    public List<GameObject> targetObjects; // UnityƒGƒfƒBƒ^‚Å“o˜^
-    private List<int> clickHistory = new List<int>(); // ”’l—š—ğiÅ‘å4Œj
+    public List<GameObject> targetObjects; // Unityã‚¨ãƒ‡ã‚£ã‚¿ã§ç™»éŒ²
+   
 
     public GameObject UP_Drink1;
     public GameObject UP_Drink2;
@@ -29,61 +29,34 @@ public class ObjectClickManager : MonoBehaviour
     int thirdNumber;
     int fourNumber;
 
+
+
+    private List<int> clickHistory = new List<int>();
+
+    private List<GameObject> upDrinks;
+    private List<GameObject> middleDrinks;
+    private List<GameObject> downDrinks;
+
+
+    public List<int> GetFullHistory()
+    {
+        return new List<int>(clickHistory);
+    }
+
+
+
     void Start()
     {
+        upDrinks = new List<GameObject> { UP_Drink1, UP_Drink2, UP_Drink3, UP_Drink4, UP_Drink5 };
+        middleDrinks = new List<GameObject> { In_Drink1, In_Drink2, In_Drink3, In_Drink4, In_Drink5 };
+        downDrinks = new List<GameObject> { Down_Drink1, Down_Drink2, Down_Drink3, Down_Drink4, Down_Drink5 };
+
         Reset();
     }
 
-    void DrinkOut()
-    {
-        if (clickHistory.Count >= 4)
-        {
-            // ƒtƒB[ƒ‹ƒh•Ï”‚É‘ã“üiint ‚ğÄ’è‹`‚µ‚È‚¢j
-            firstNumber = clickHistory[0];
-            secondNumber = clickHistory[1];
-            thirdNumber = clickHistory[2];
-            fourNumber = clickHistory[3];
-
-            Debug.Log("ˆê”Ô–Ú‚Ì”š: " + firstNumber);
-            Debug.Log("“ñ”Ô–Ú‚Ì”š: " + secondNumber);
-            Debug.Log("O”Ô–Ú‚Ì”š: " + thirdNumber);
-            Debug.Log("l”Ô–Ú‚Ì”š: " + fourNumber);
-        }
-        else
-        {
-            Debug.Log("—š—ğ‚ª4Œ–¢–‚Å‚·");
-            return; // —š—ğ‚ª‘«‚è‚È‚¢ê‡‚Íˆ—‚ğ’†’f
-        }
-
-        // ˆÈ‰º‚Í—š—ğ‚ª4Œ‚ ‚é‚Æ‚«‚¾‚¯Às‚³‚ê‚é•\¦ˆ—
-        if (firstNumber == 0) UP_Drink1.SetActive(true);
-        if (firstNumber == 1) UP_Drink2.SetActive(true);
-        if (firstNumber == 2) UP_Drink3.SetActive(true);
-        if (firstNumber == 3) UP_Drink4.SetActive(true);
-        if (firstNumber == 4) UP_Drink5.SetActive(true);
-
-        if (secondNumber == 0) In_Drink1.SetActive(true);
-        if (secondNumber == 1) In_Drink2.SetActive(true);
-        if (secondNumber == 2) In_Drink3.SetActive(true);
-        if (secondNumber == 3) In_Drink4.SetActive(true);
-        if (secondNumber == 4) In_Drink5.SetActive(true);
-
-        if (thirdNumber == 0 || thirdNumber == 5) Down_Drink1.SetActive(true);
-        if (thirdNumber == 1) Down_Drink2.SetActive(true);
-        if (thirdNumber == 2) Down_Drink3.SetActive(true);
-        if (thirdNumber == 3) Down_Drink4.SetActive(true);
-        if (thirdNumber == 4) Down_Drink5.SetActive(true);
-
-        if (fourNumber == 1) Apple.SetActive(true);
-        if (fourNumber == 2) Carrot.SetActive(true);
-    }
-
-
-
-
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // ¶ƒNƒŠƒbƒN
+        if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -95,54 +68,106 @@ public class ObjectClickManager : MonoBehaviour
 
                 if (index != -1)
                 {
-                    // ”Ô†‚ª8‚È‚ç—š—ğ‚ğƒŠƒZƒbƒg
                     if (index == 7)
                     {
                         clickHistory.Clear();
                         Reset();
-                        Debug.Log("”Ô†‚ª7‚¾‚Á‚½‚Ì‚Å—š—ğ‚ğƒŠƒZƒbƒg‚µ‚Ü‚µ‚½");
+                        Debug.Log("å±¥æ­´ã‚’ãƒªã‚»ãƒƒãƒˆã—ã¾ã—ãŸ");
                     }
                     else
                     {
-                        // —š—ğ‚ª4Œ–¢–‚Ì‚Æ‚«‚¾‚¯æ“ª‚É’Ç‰Á
+                        // ãƒ•ãƒ«ãƒ¼ãƒ„ã®ç•ªå·ï¼ˆä¾‹ï¼š1, 2, 5, 6ï¼‰ã‚’åˆ¶é™
+                        bool isFruit = (index == 5 || index == 6);
+
+                        if (isFruit && clickHistory.Count < 3)
+                        {
+                            Debug.Log("ãƒ‰ãƒªãƒ³ã‚¯ãŒ3ã¤æƒã£ã¦ã„ãªã„ãŸã‚ã€ãƒ•ãƒ«ãƒ¼ãƒ„ã¯è¿½åŠ ã§ãã¾ã›ã‚“");
+                            return;
+                        }
+
                         if (clickHistory.Count < 4)
                         {
-                            clickHistory.Insert(0, index); // æ“ª‚É’Ç‰Á
-                            Debug.Log("ƒNƒŠƒbƒN‚³‚ê‚½”Ô†: " + index);
+                            clickHistory.Add(index); // å¤ã„é †ã«è¿½åŠ 
+                            Debug.Log("ã‚¯ãƒªãƒƒã‚¯ã•ã‚ŒãŸç•ªå·: " + index);
                             DrinkOut();
                         }
                         else
                         {
-                            Debug.Log("—š—ğ‚ª–”ti4Œj‚È‚Ì‚Å’Ç‰Á‚µ‚Ü‚¹‚ñ");
+                            Debug.Log("å±¥æ­´ãŒæº€æ¯ï¼ˆ4ä»¶ï¼‰ãªã®ã§è¿½åŠ ã—ã¾ã›ã‚“");
                         }
                     }
 
-                    Debug.Log("—š—ğiV‚µ‚¢‡j: " + string.Join(", ", clickHistory));
+                    Debug.Log("å±¥æ­´ï¼ˆå¤ã„é †ï¼‰: " + string.Join(", ", clickHistory));
                 }
             }
+
+
+        }
+    }
+
+    void DrinkOut()
+    {
+        Reset(); // è¡¨ç¤ºã‚’åˆæœŸåŒ–
+
+        if (clickHistory.Count >= 1)
+        {
+            int bottom = clickHistory[0];
+            if (bottom >= 0 && bottom <= 4)
+                ShowOnlyInGroup(downDrinks[bottom], downDrinks);
+        }
+
+        if (clickHistory.Count >= 2)
+        {
+            int middle = clickHistory[1];
+            if (middle >= 0 && middle <= 4)
+                ShowOnlyInGroup(middleDrinks[middle], middleDrinks);
+        }
+
+        if (clickHistory.Count >= 3)
+        {
+            int top = clickHistory[2];
+            if (top >= 0 && top <= 4)
+                ShowOnlyInGroup(upDrinks[top], upDrinks);
+        }
+
+        if (clickHistory.Count >= 4)
+        {
+            // ãƒ‰ãƒªãƒ³ã‚¯ãŒã™ã¹ã¦æœ‰åŠ¹ãªç•ªå·ï¼ˆ0ã€œ4ï¼‰ã§ã‚ã‚‹ã“ã¨ã‚’ç¢ºèª
+            bool allDrinksValid =
+                clickHistory[0] >= 0 && clickHistory[0] <= 4 &&
+                clickHistory[1] >= 0 && clickHistory[1] <= 4 &&
+                clickHistory[2] >= 0 && clickHistory[2] <= 4;
+
+            if (allDrinksValid)
+            {
+                int fruit = clickHistory[3];
+                if (fruit == 1 || fruit == 5) Apple.SetActive(true);
+                else if (fruit == 2 || fruit == 6) Carrot.SetActive(true);
+            }
+            else
+            {
+                Debug.Log("ãƒ‰ãƒªãƒ³ã‚¯ãŒã™ã¹ã¦æƒã£ã¦ã„ãªã„ãŸã‚ã€ãƒ•ãƒ«ãƒ¼ãƒ„ã¯è¡¨ç¤ºã•ã‚Œã¾ã›ã‚“");
+            }
+        }
+
+    }
+
+    void ShowOnlyInGroup(GameObject selected, List<GameObject> group)
+    {
+        foreach (GameObject obj in group)
+        {
+            obj.SetActive(obj == selected);
         }
     }
 
     void Reset()
     {
-        UP_Drink1.SetActive(false);
-        UP_Drink2.SetActive(false);
-        UP_Drink3.SetActive(false);
-        UP_Drink4.SetActive(false);
-        UP_Drink5.SetActive(false);
-        In_Drink1.SetActive(false);
-        In_Drink2.SetActive(false);
-        In_Drink3.SetActive(false);
-        In_Drink4.SetActive(false);
-        In_Drink5.SetActive(false);
-        Down_Drink1.SetActive(false);
-        Down_Drink2.SetActive(false);
-        Down_Drink3.SetActive(false);
-        Down_Drink4.SetActive(false);
-        Down_Drink5.SetActive(false);
+        foreach (var obj in upDrinks) obj.SetActive(false);
+        foreach (var obj in middleDrinks) obj.SetActive(false);
+        foreach (var obj in downDrinks) obj.SetActive(false);
         Apple.SetActive(false);
         Carrot.SetActive(false);
     }
-
-
 }
+
+
