@@ -9,6 +9,9 @@ public class talknpcmain : MonoBehaviour
     public TMP_Text dialogueText;     // セリフ表示用
     public GameObject player;
 
+    [SerializeField] private GameObject talkMark; // 会話可能マーク
+    [SerializeField] private Camera mainCamera;   // メインカメラ
+
     private bool playerInRange = false;
     private bool isTalking = false;
     private int messageIndex = 0;
@@ -28,7 +31,7 @@ public class talknpcmain : MonoBehaviour
     void Start()
     {
         dialogueUI.SetActive(false);
-
+        if (talkMark != null) talkMark.SetActive(false);//マークを非表示に
         // CSVをロードしてこのNPC用のセリフを読み込む
         LoadCSV("sinariodeta1-2");
     }
@@ -44,10 +47,23 @@ public class talknpcmain : MonoBehaviour
         }
     }
 
+    private void LateUpdate()
+    {
+        // マークをカメラの方向に向ける
+        if (talkMark != null && talkMark.activeSelf)
+        {
+            talkMark.transform.LookAt(talkMark.transform.position + mainCamera.transform.forward);
+        }
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
+        {
             playerInRange = true;
+            if (talkMark != null) talkMark.SetActive(true); // 範囲に入ったらマーク表示
+        }
+            
     }
 
     void OnTriggerExit(Collider other)
@@ -55,6 +71,7 @@ public class talknpcmain : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+            if (talkMark != null) talkMark.SetActive(false); // 範囲から出たら非表示
             EndDialogue();
         }
     }
@@ -107,13 +124,13 @@ public class talknpcmain : MonoBehaviour
     /// </summary>
     void StartDialogue()
     {
-        isTalking = true;
+        isTalking = true; 
         messageIndex = 0;
-        dialogueUI.SetActive(true);
+        dialogueUI.SetActive(true); 
         ShowMessage();
 
-        // プレイヤーの操作を止める
-        var pc = player.GetComponent<PlayerController>();
+        //プレイヤーを止める
+        var pc = player.GetComponent<PlayerController>(); 
         if (pc != null) pc.enabled = false;
 
         var myPc = player.GetComponent<MyPlayerController>();
