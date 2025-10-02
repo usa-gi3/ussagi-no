@@ -23,6 +23,7 @@ public class ObjectClickManager : MonoBehaviour
     public GameObject Down_Drink5;
     public GameObject Apple;
     public GameObject Carrot;
+    public int Cheaker=0;
 
     int firstNumber;
     int secondNumber;
@@ -31,7 +32,7 @@ public class ObjectClickManager : MonoBehaviour
 
 
 
-    private List<int> clickHistory = new List<int>();
+    public List<int> clickHistory = new List<int>();
 
     private List<GameObject> upDrinks;
     private List<GameObject> middleDrinks;
@@ -74,33 +75,50 @@ public class ObjectClickManager : MonoBehaviour
                         Reset();
                         Debug.Log("履歴をリセットしました");
                     }
+                    else if (index == 8)
+                    {
+                        Cheaker = 1;
+
+                    }
                     else
                     {
-                        // フルーツの番号（例：1, 2, 5, 6）を制限
-                        bool isFruit = (index == 5 || index == 6);
+                        bool isFruit = (index == 5 || index == 6); // フルーツの番号
 
-                        if (isFruit && clickHistory.Count < 3)
+                        if (clickHistory.Count < 3)
                         {
-                            Debug.Log("ドリンクが3つ揃っていないため、フルーツは追加できません");
-                            return;
+                            // ドリンクを追加（0〜4）
+                            if (!isFruit)
+                            {
+                                clickHistory.Add(index);
+                                Debug.Log("ドリンク追加: " + index);
+                                DrinkOut();
+                            }
+                            else
+                            {
+                                Debug.Log("ドリンクが3つ揃っていないため、フルーツは追加できません");
+                            }
                         }
-
-                        if (clickHistory.Count < 4)
+                        else if (clickHistory.Count == 3)
                         {
-                            clickHistory.Add(index); // 古い順に追加
-                            Debug.Log("クリックされた番号: " + index);
-                            DrinkOut();
+                            // フルーツのみ追加許可
+                            if (isFruit)
+                            {
+                                clickHistory.Add(index);
+                                Debug.Log("フルーツ追加: " + index);
+                                DrinkOut();
+                            }
+                            else
+                            {
+                                Debug.Log("ドリンクはすでに3つ選ばれています。これ以上追加できません");
+                            }
                         }
                         else
                         {
                             Debug.Log("履歴が満杯（4件）なので追加しません");
                         }
                     }
-
-                    Debug.Log("履歴（古い順）: " + string.Join(", ", clickHistory));
                 }
             }
-
 
         }
     }
@@ -160,7 +178,7 @@ public class ObjectClickManager : MonoBehaviour
         }
     }
 
-    void Reset()
+    public void Reset()
     {
         foreach (var obj in upDrinks) obj.SetActive(false);
         foreach (var obj in middleDrinks) obj.SetActive(false);
