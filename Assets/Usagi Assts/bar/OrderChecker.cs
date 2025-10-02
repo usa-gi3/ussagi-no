@@ -1,11 +1,31 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 
 public class OrderChecker : MonoBehaviour
 {
     public OrderGenerator orderGenerator;
     public ObjectClickManager clickManager;
+    public int Clear;
+    public GameObject ClearSeen;
+
+    void Update()
+    {
+        // Cheakerが1になったら判定を実行
+        if (clickManager.Cheaker == 1)
+        {
+            CheckOrder();
+
+            // 一度だけ実行したい場合はCheakerをリセット
+            clickManager.Cheaker = 0;
+        }
+    }
+
+
+
+
+
+
+
 
     public void CheckOrder()
     {
@@ -31,6 +51,15 @@ public class OrderChecker : MonoBehaviour
         if (isMatch)
         {
             Debug.Log("注文通り！正解です！");
+            Clear++;
+
+            if (Clear > 4)
+            {
+                ClearSeen.SetActive(true);
+            }
+
+            clickManager.Reset();
+            orderGenerator.GenerateNewOrder();
         }
         else
         {
