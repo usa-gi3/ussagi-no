@@ -4,21 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class SettingMenuUI : MonoBehaviour
+public class GuideMenuUI : MonoBehaviour
 {
     private List<Selectable> uiElements = new List<Selectable>();
     private int currentSelectedIndex = 0;
 
     void Start()
     {
-        // 子階層から全ボタン取得
+        // 子階層からボタン取得
         Selectable[] elements = GetComponentsInChildren<Selectable>();
         uiElements.AddRange(elements);
 
         if (uiElements.Count > 0)
         {
             currentSelectedIndex = 0;
-            UpdateSelection();
+            EventSystem.current.SetSelectedGameObject(uiElements[0].gameObject);
         }
     }
 
@@ -29,37 +29,32 @@ public class SettingMenuUI : MonoBehaviour
 
     void HandleMenuNavigation()
     {
-        // ↑↓ で選択切り替え
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+
+        if (uiElements.Count == 0) return;
+
+        // ボタンが複数ある場合のみ上下移動を許可
+        if (uiElements.Count > 1)
         {
+            // ↑↓ で選択切り替え
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+            {
             currentSelectedIndex = (currentSelectedIndex - 1 + uiElements.Count) % uiElements.Count;
             UpdateSelection();
-        }
+            }
         else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
-        {
+            {
             currentSelectedIndex = (currentSelectedIndex + 1) % uiElements.Count;
             UpdateSelection();
+            }
         }
+            
 
         // Enter / Space → ボタンを押す
-        else if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
         {
             if (uiElements[currentSelectedIndex] is Button button)
             {
                 button.onClick.Invoke();
-            }
-        }
-
-        // ←→ でスライダー調整
-        else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
-        {
-            if (uiElements[currentSelectedIndex] is Slider slider)
-            {
-                float step = 0.01f; // 音量調整幅
-                if (Input.GetKey(KeyCode.LeftArrow))
-                    slider.value -= step;
-                if (Input.GetKey(KeyCode.RightArrow))
-                    slider.value += step;
             }
         }
     }
@@ -86,19 +81,6 @@ public class SettingMenuUI : MonoBehaviour
                 }
                 button.colors = colors;
             }
-
-            // スライダーの選択枠表示切り替え
-            if (element is Slider slider)
-            {
-                Transform outline = slider.transform.Find("Outline");
-                if (outline != null)
-                {
-                    outline.gameObject.SetActive(i == currentSelectedIndex);
-                }
-            }
         }
-
-        EventSystem.current.SetSelectedGameObject(uiElements[currentSelectedIndex].gameObject);
     }
 }
-
