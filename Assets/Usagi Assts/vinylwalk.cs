@@ -5,6 +5,7 @@ using UnityEngine;
 public class vinylwalk : MonoBehaviour
 {
     public float speed = 5f;
+    public float rotationSpeed = 10f;
 
     private CharacterController controller;
     private Animator animator;
@@ -45,8 +46,18 @@ public class vinylwalk : MonoBehaviour
 
         if (move.magnitude > 1f) move = move.normalized;
 
+        //アニメーション
         animator.SetFloat("iswalking", move.magnitude);
 
+        //移動
         controller.Move(move * speed * Time.deltaTime);
+
+        // 向きを変える処理
+        if (move != Vector3.zero)
+        {
+            // 移動方向へ回転
+            Quaternion targetRotation = Quaternion.LookRotation(move);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+        }
     }
 }
