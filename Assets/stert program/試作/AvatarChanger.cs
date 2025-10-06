@@ -6,14 +6,15 @@ using UnityEngine;
 public class AvatarChanger : MonoBehaviour
 {
     [Header("Animator & Avatars")]
-    public Animator animator;              // PlayerのAnimator
-    public GameObject defaultModel;        // 元のモデル（表示だけ）
-    public GameObject[] avatarPrefabs;     // 切り替え用Prefab
-    public Avatar[] avatars;               // Avatar差し替え用（Humanoid）
+    public Animator animator;              // 空オブジェクトについているAnimator
+    public GameObject defaultModel;        // デフォルトの見た目（Animatorは削除しておく）
+    public Avatar defaultAvatar;           // defaultModelのAvatar
+    public GameObject[] avatarPrefabs;     // 切り替え用の見た目
+    public Avatar[] avatars;               // 各アバターのAvatar（Humanoid）
 
-    private GameObject currentAvatarObj;   // 現在の生成アバター
-    private int currentAvatarID = -1;      // 現在のAvatarID
-    private bool isTransformed = false;    // 変身中か
+    private GameObject currentAvatarObj;
+    private int currentAvatarID = -1;
+    private bool isTransformed = false;
 
     void Update()
     {
@@ -23,12 +24,11 @@ public class AvatarChanger : MonoBehaviour
         }
     }
 
-    // 変身／解除切り替え
     void ToggleAvatar()
     {
         if (isTransformed)
         {
-            // 元の姿に戻す
+            // 戻す
             if (currentAvatarObj != null)
             {
                 Destroy(currentAvatarObj);
@@ -38,56 +38,39 @@ public class AvatarChanger : MonoBehaviour
             if (defaultModel != null)
                 defaultModel.SetActive(true);
 
-            // Animatorを元のAvatarに戻す
-            if (currentAvatarID >= 0 && currentAvatarID < avatars.Length)
-                animator.avatar = null; // デフォルト姿ならAvatarなしでもOK
+            animator.avatar = defaultAvatar;
+            animator.Rebind();
+            animator.Update(0);
 
             isTransformed = false;
         }
         else
         {
-            // 変身する
+            // 変身
             if (currentAvatarID < 0 && avatarPrefabs.Length > 0)
-            {
-                currentAvatarID = 0; // 初期は0番目のアバター
-            }
+                currentAvatarID = 0;
 
             if (currentAvatarID >= 0 && currentAvatarID < avatarPrefabs.Length)
             {
-                // 前の生成アバターを削除
                 if (currentAvatarObj != null)
                     Destroy(currentAvatarObj);
 
-                // 新しいアバターを生成
                 currentAvatarObj = Instantiate(avatarPrefabs[currentAvatarID], transform);
                 currentAvatarObj.transform.localPosition = Vector3.zero;
                 currentAvatarObj.transform.localRotation = Quaternion.identity;
                 currentAvatarObj.transform.localScale = Vector3.one;
 
-                // 元のモデルを非表示
+                currentAvatarObj.tag = "Player";
+
                 if (defaultModel != null)
                     defaultModel.SetActive(false);
 
-                // AnimatorのAvatarを切り替え
                 animator.avatar = avatars[currentAvatarID];
+                animator.Rebind();
+                animator.Update(0);
             }
 
             isTransformed = true;
-        }
-    }
-
-    // 別のAvatarに切り替えたいとき用
-    public void SetAvatar(int id)
-    {
-        if (id >= 0 && id < avatarPrefabs.Length)
-        {
-            currentAvatarID = id;
-            if (isTransformed)
-            {
-                // 変身中ならすぐ切り替え
-                ToggleAvatar();
-                ToggleAvatar();
-            }
         }
     }
 }

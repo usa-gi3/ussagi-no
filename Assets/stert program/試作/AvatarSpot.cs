@@ -14,7 +14,7 @@ public class AvatarSpot : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            changer.SetAvatar(avatarID);
+            //changer.SetAvatar(avatarID);
         }
     }
 }

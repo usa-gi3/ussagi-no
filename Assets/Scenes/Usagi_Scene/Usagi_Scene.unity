@@ -1452,18 +1452,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400026, guid: b13da3560aac44b4a8f73af033252169, type: 3}
   m_PrefabInstance: {fileID: 544958470}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &60834817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 60834809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 937cb6ae6d505e84ab2eecf11634eb2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &60931045 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1476162273687667884, guid: 0feba03cd86bc8a4e8f7ada56dfaec0e, type: 3}
@@ -12671,13 +12659,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: fbc9d306c39f3de4391b1ca0937c46d8, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: b13da3560aac44b4a8f73af033252169, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 100026, guid: b13da3560aac44b4a8f73af033252169, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 60834817}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b13da3560aac44b4a8f73af033252169, type: 3}
 --- !u!1001 &546904774
 PrefabInstance:
@@ -26311,7 +26297,7 @@ Transform:
   m_GameObject: {fileID: 1217599345}
   serializedVersion: 2
   m_LocalRotation: {x: 0.27704975, y: 0.02431342, z: -0.007012873, w: 0.96052235}
-  m_LocalPosition: {x: 0.0089995805, y: 1.231, z: -1.4740007}
+  m_LocalPosition: {x: -0.05, y: 1.329, z: -1.285}
   m_LocalScale: {x: -0.36000004, y: 0.4651165, z: 0.46511638}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -37878,6 +37864,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 1723982690}
   defaultModel: {fileID: 60834809}
+  defaultAvatar: {fileID: 9000000, guid: b13da3560aac44b4a8f73af033252169, type: 3}
   avatarPrefabs:
   - {fileID: 100026, guid: d4e8fd535b61e6449a8a8a0d1dd14731, type: 3}
   - {fileID: 100026, guid: 384a5df61c63fa74184c69861eb012a3, type: 3}
