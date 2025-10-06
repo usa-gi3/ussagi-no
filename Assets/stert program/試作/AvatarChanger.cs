@@ -18,6 +18,7 @@ public class AvatarChanger : MonoBehaviour
 
     void Update()
     {
+        //Cで変身
         if (Input.GetKeyDown(KeyCode.C))
         {
             ToggleAvatar();
@@ -26,9 +27,10 @@ public class AvatarChanger : MonoBehaviour
 
     void ToggleAvatar()
     {
+        //変身を解除して元に戻す処理
         if (isTransformed)
         {
-            // 戻す
+            // 現在のアバターを削除
             if (currentAvatarObj != null)
             {
                 Destroy(currentAvatarObj);
