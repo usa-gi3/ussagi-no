@@ -6,6 +6,7 @@ public class OrderChecker : MonoBehaviour
     public OrderGenerator orderGenerator;
     public ObjectClickManager clickManager;
     public int Clear;
+    public ScoreManager scoreManager;
     public GameObject ClearSeen;
 
     void Update()
@@ -19,13 +20,6 @@ public class OrderChecker : MonoBehaviour
             clickManager.Cheaker = 0;
         }
     }
-
-
-
-
-
-
-
 
     public void CheckOrder()
     {
@@ -52,6 +46,7 @@ public class OrderChecker : MonoBehaviour
         {
             Debug.Log("注文通り！正解です！");
             Clear++;
+            scoreManager.UpdateScore(Clear);
 
             if (Clear > 4)
             {
