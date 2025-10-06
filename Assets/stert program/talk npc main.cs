@@ -82,11 +82,6 @@ public class talknpcmain : MonoBehaviour
     void LoadCSV(string fileName)
     {
         TextAsset csvFile = Resources.Load<TextAsset>(fileName);
-        if (csvFile == null)
-        {
-            Debug.LogError("CSVファイルが見つかりません: " + fileName);
-            return;
-        }
 
         string[] lines = csvFile.text.Split('\n');
         for (int i = 1; i < lines.Length; i++) // 1行目はヘッダ
