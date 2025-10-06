@@ -50,9 +50,6 @@ public class Guide : MonoBehaviour
         // 戻るボタンで非表示（削除）
         // ★ メニューを再有効化
         EnablePauseMenu();
-        //セーブ
-        //PlayerPrefs.Save();
-        //Debug.Log("戻るボタンが押されました");
         Destroy(gameObject.transform.root.gameObject);
     }
 
