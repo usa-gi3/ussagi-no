@@ -36,6 +36,8 @@ public class BGMManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        float savedVolume = PlayerPrefs.GetFloat("BGMVolume", 1f);
+
         // シーン内にBGM用のAudioSourceがあるなら差し替え
         AudioSource sceneSource = GameObject.FindWithTag("BGMSource")?.GetComponent<AudioSource>();
         if (sceneSource != null)
@@ -43,12 +45,15 @@ public class BGMManager : MonoBehaviour
             bgmSource = sceneSource;
         }
 
+        // 音量を再反映
+        bgmSource.volume = savedVolume;
+
         // シーン名に応じてBGM切り替え
         AudioClip newClip = Resources.Load<AudioClip>($"BGM/{scene.name}");
-        if (newClip != null && bgmSource != null && bgmSource.clip != newClip)
+        if (newClip != null /*&& bgmSource != null */&& bgmSource.clip != newClip)
         {
             bgmSource.clip = newClip;
-            bgmSource.volume = PlayerPrefs.GetFloat("BGMVolume", 1f); // 保存値を反映
+            //bgmSource.volume = PlayerPrefs.GetFloat("BGMVolume", 1f); // 保存値を反映
             bgmSource.Play();
         }
     }
