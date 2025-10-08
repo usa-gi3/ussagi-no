@@ -1,4 +1,4 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Ink.Runtime;
@@ -10,51 +10,94 @@ public class InkController : MonoBehaviour
     public TextAsset inkJSONAsset;
 
     [Header("UI")]
-    public TextMeshProUGUI dialogueText; // TMPópÇ…ïœçX
-    public GameObject choiceButtonPrefab; // TMPëŒâûÇÃButtonÉvÉåÉnÉu
+    public GameObject dialoguePanel;
+    public TextMeshProUGUI dialogueText;
+    public GameObject choiceButtonPrefab;
     public Transform choiceButtonContainer;
 
     private Story story;
 
-    void Start()
+    public void StartDialogue()
     {
+        Debug.Log("StartDialogue„ÅåÂëº„Å∞„Çå„Åæ„Åó„Åü");
+
+        if (inkJSONAsset == null)
+        {
+            Debug.LogError("inkJSONAsset „ÅåË®≠ÂÆö„Åï„Çå„Å¶„ÅÑ„Åæ„Åõ„Çì");
+            return;
+        }
+
         story = new Story(inkJSONAsset.text);
+
+        story.ChoosePathString("shop_intro");
+
+        dialoguePanel.SetActive(true);
         RefreshView();
     }
 
+
+
     void RefreshView()
     {
-        // ÉZÉäÉtï\é¶
+        Debug.Log("ÈÅ∏ÊäûËÇ¢„ÅÆÊï∞Ôºö" + story.currentChoices.Count);
+
+        // 1. „Çª„É™„Éï„ÇíË°®Á§∫
         if (story.canContinue)
         {
             string text = story.Continue().Trim();
-            dialogueText.text = text;
+            dialogueText.text = text.Replace("\n", "\n");
+        }
+        else if (story.currentChoices.Count == 0)
+        {
+            EndDialogue();
+            return;
         }
 
-        // ä˘ë∂ÇÃëIëéàÇçÌèú
+        // 2. Êó¢Â≠ò„ÅÆÈÅ∏ÊäûËÇ¢„ÇíÂâäÈô§
         foreach (Transform child in choiceButtonContainer)
         {
             Destroy(child.gameObject);
         }
 
-        // ëIëéàï\é¶
-        if (story.currentChoices.Count > 0)
+        // 3. ÈÅ∏ÊäûËÇ¢„ÇíÁîüÊàê
+        foreach (Choice choice in story.currentChoices)
         {
-            foreach (Choice choice in story.currentChoices)
-            {
-                GameObject buttonObj = Instantiate(choiceButtonPrefab, choiceButtonContainer);
-                TextMeshProUGUI buttonText = buttonObj.GetComponentInChildren<TextMeshProUGUI>();
-                buttonText.text = choice.text;
+            GameObject buttonObj = Instantiate(choiceButtonPrefab, choiceButtonContainer);
+            Debug.Log("„Éú„Çø„É≥ÁîüÊàê: " + choice.text);
 
-                Button button = buttonObj.GetComponent<Button>();
-                button.onClick.AddListener(() => OnChoiceSelected(choice.index));
-            }
+            TextMeshProUGUI buttonText = buttonObj.GetComponentInChildren<TextMeshProUGUI>();
+            buttonText.text = choice.text;
+
+            Button button = buttonObj.GetComponent<Button>();
+            int choiceIndex = story.currentChoices.IndexOf(choice);
+            button.onClick.AddListener(() => OnChoiceSelected(choiceIndex));
         }
     }
+
 
     void OnChoiceSelected(int choiceIndex)
     {
         story.ChooseChoiceIndex(choiceIndex);
         RefreshView();
     }
+
+    public void EndDialogue()
+    {
+        dialoguePanel.SetActive(false);
+        Debug.Log("Dialogue ended.");
+    }
+
+    void Update()
+    {
+        if (story == null || dialoguePanel == null)
+            return;
+
+        if (dialoguePanel.activeSelf && Input.GetMouseButtonDown(0))
+        {
+            if (story.canContinue)
+                RefreshView();
+        }
+    }
+
+
 }
