@@ -68,13 +68,16 @@ public class SettingMenuUI : MonoBehaviour
     {
         for (int i = 0; i < uiElements.Count; i++)
         {
-            if (uiElements[i] is Button button)
+            Selectable element = uiElements[i];
+
+            //ボタンの選択中は色変更
+            if (element is Button button)
             {
-                ColorBlock colors = button.colors;
+                ColorBlock colors = element.colors;
                 if (i == currentSelectedIndex)
                 {
-                    colors.normalColor = Color.yellow;
-                    colors.selectedColor = Color.yellow;
+                    colors.normalColor = new Color(0.85f, 0.85f, 0.85f, 1f); //淡い灰色
+                    colors.selectedColor = new Color(0.85f, 0.85f, 0.85f, 1f);
                 }
                 else
                 {
@@ -82,6 +85,16 @@ public class SettingMenuUI : MonoBehaviour
                     colors.selectedColor = Color.white;
                 }
                 button.colors = colors;
+            }
+
+            // スライダーの選択枠表示切り替え
+            if (element is Slider slider)
+            {
+                Transform outline = slider.transform.Find("Outline");
+                if (outline != null)
+                {
+                    outline.gameObject.SetActive(i == currentSelectedIndex);
+                }
             }
         }
 
