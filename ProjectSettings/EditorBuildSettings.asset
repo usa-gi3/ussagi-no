@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/start Scene.unity
     guid: ac97e45fa05086a449923c1ec0834ee6
+  - enabled: 1
+    path: Assets/Scenes/Usagi_Scene/Cocktail_Scene.unity
+    guid: ddf9073786ec9fb4982804d25b7279c3
   m_configObjects: {}
