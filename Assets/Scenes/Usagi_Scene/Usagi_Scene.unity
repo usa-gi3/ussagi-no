@@ -29885,7 +29885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d2bf21e95c1e8a479ca5665aff18602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seeScript: {fileID: 0}
+  seeScript: {fileID: 1723982694}
   defaultXSensitivity: 0.5
   defaultYSensitivity: 0.5
 --- !u!4 &1421961222
