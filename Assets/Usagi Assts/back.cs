@@ -15,18 +15,9 @@ public class back : MonoBehaviour
     private bool isTouchingofice = false;
     private bool isTouchingmeid = false;
 
-    [SerializeField] private GameObject talkMark; // 会話可能マーク
-    [SerializeField] private Camera mainCamera;   // メインカメラ
-
-    void Start()
-    {
-        if (talkMark != null) talkMark.SetActive(false);//マークを非表示に
-    }
 
     void OnTriggerEnter(Collider other)
     {
-        if (talkMark != null) talkMark.SetActive(true); // 範囲に入ったらマーク表示
-
         Debug.Log("衝突したオブジェクトのタグ: " + other.gameObject.tag);
 
         if (other.CompareTag("shop"))
@@ -64,17 +55,10 @@ public class back : MonoBehaviour
             isTouchingmeid = true;
         }
 
-
-
     }
-
-
-
 
     void OnTriggerExit(Collider other)
     {
-        if (talkMark != null) talkMark.SetActive(false); // 範囲から出たら非表示
-
         if (other.CompareTag("shop"))
         {
             isTouchingShop = false;
@@ -152,12 +136,4 @@ public class back : MonoBehaviour
         }
     }
 
-    private void LateUpdate()
-    {
-        // マークをカメラの方向に向ける
-        if (talkMark != null && talkMark.activeSelf)
-        {
-            talkMark.transform.LookAt(talkMark.transform.position + mainCamera.transform.forward);
-        }
-    }
 }
