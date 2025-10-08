@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 
 public class back : MonoBehaviour
 {
@@ -12,6 +14,7 @@ public class back : MonoBehaviour
     private bool isTouchingPizza1 = false;
     private bool isTouchingofice = false;
     private bool isTouchingmeid = false;
+
 
     void OnTriggerEnter(Collider other)
     {
@@ -52,12 +55,7 @@ public class back : MonoBehaviour
             isTouchingmeid = true;
         }
 
-
-
     }
-
-
-
 
     void OnTriggerExit(Collider other)
     {
@@ -137,4 +135,5 @@ public class back : MonoBehaviour
             SceneManager.LoadScene("Usagi_Scene");
         }
     }
+
 }
