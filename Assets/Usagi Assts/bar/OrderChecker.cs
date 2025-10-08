@@ -6,10 +6,7 @@ public class OrderChecker : MonoBehaviour
     public OrderGenerator orderGenerator;
     public ObjectClickManager clickManager;
     public int Clear;
-<<<<<<< HEAD
-=======
     public ScoreManager scoreManager;
->>>>>>> master
     public GameObject ClearSeen;
 
     void Update()
@@ -24,16 +21,6 @@ public class OrderChecker : MonoBehaviour
         }
     }
 
-<<<<<<< HEAD
-
-
-
-
-
-
-
-=======
->>>>>>> master
     public void CheckOrder()
     {
         List<int> order = orderGenerator.GetOrder(); // 1桁目: フルーツ, 2〜4桁目: ドリンク
@@ -59,10 +46,7 @@ public class OrderChecker : MonoBehaviour
         {
             Debug.Log("注文通り！正解です！");
             Clear++;
-<<<<<<< HEAD
-=======
             scoreManager.UpdateScore(Clear);
->>>>>>> master
 
             if (Clear > 4)
             {
