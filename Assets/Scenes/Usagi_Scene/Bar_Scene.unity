@@ -2846,7 +2846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6c4ce9655ba2d34ea024a67c9bb2d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkJSONAsset: {fileID: 4900000, guid: 9f5c67d5bde1af24da41df9a735194a4, type: 3}
+  inkJSONAsset: {fileID: 4900000, guid: 10c119a29ca321e498d4f8eb6f7693c9, type: 3}
   dialoguePanel: {fileID: 1452787499}
   dialogueText: {fileID: 690320176}
   choiceButtonPrefab: {fileID: 1092467688280304803, guid: 921f23681e29ddd49b2aeb9b4a776a16, type: 3}
@@ -41797,7 +41797,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e8ee97d2e9ccf642bce70269f7c9daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inkJSONAsset: {fileID: 4900000, guid: 4bf5d01b19d66ef48bfdd7089da77712, type: 3}
+  inkJSONAsset: {fileID: 4900000, guid: cc1629044b9e47c40ab11091eef7603c, type: 3}
   dialoguePanel: {fileID: 1452787499}
   dialogueText: {fileID: 690320176}
   choiceButtonPrefab: {fileID: 1092467688280304803, guid: 921f23681e29ddd49b2aeb9b4a776a16, type: 3}
