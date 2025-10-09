@@ -1281,8 +1281,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2100b8ae9650b734a8ff125475bb8607, type: 3}
   m_PrefabInstance: {fileID: 701873187}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-=======
 --- !u!1 &216583050
 GameObject:
   m_ObjectHideFlags: 0
@@ -1417,7 +1415,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 216583050}
   m_CullTransparentMesh: 1
->>>>>>> master
 --- !u!1 &227023759 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2100b8ae9650b734a8ff125475bb8607, type: 3}
@@ -4814,8 +4811,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6601999717671791479, guid: 9d530da0392d50b4698082be570f2c38, type: 3}
   m_PrefabInstance: {fileID: 858728343}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-=======
 --- !u!1 &904382693
 GameObject:
   m_ObjectHideFlags: 0
@@ -4950,7 +4945,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 904382693}
   m_CullTransparentMesh: 1
->>>>>>> master
 --- !u!1 &913618240
 GameObject:
   m_ObjectHideFlags: 0
@@ -4987,10 +4981,7 @@ MonoBehaviour:
   orderGenerator: {fileID: 1923005761}
   clickManager: {fileID: 768110472}
   Clear: 0
-<<<<<<< HEAD
-=======
   scoreManager: {fileID: 1923005762}
->>>>>>> master
   ClearSeen: {fileID: 1550215410}
 --- !u!65 &913618242
 BoxCollider:
@@ -9148,11 +9139,8 @@ GameObject:
   - component: {fileID: 1923005759}
   - component: {fileID: 1923005760}
   - component: {fileID: 1923005761}
-<<<<<<< HEAD
-=======
   - component: {fileID: 1923005762}
   - component: {fileID: 1923005763}
->>>>>>> master
   m_Layer: 0
   m_Name: GameM
   m_TagString: Untagged
@@ -9226,8 +9214,6 @@ MonoBehaviour:
   Carrot: {fileID: 819883817}
   currentOrder: 00000000
   clickManager: {fileID: 768110472}
-<<<<<<< HEAD
-=======
 --- !u!114 &1923005762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9256,7 +9242,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeLimit: 60
   timerText: {fileID: 904382695}
->>>>>>> master
 --- !u!1 &1932079028 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2100b8ae9650b734a8ff125475bb8607, type: 3}
@@ -9967,8 +9952,5 @@ SceneRoots:
   - {fileID: 1223525013}
   - {fileID: 1875242398}
   - {fileID: 64929386}
-<<<<<<< HEAD
   - {fileID: 96442327}
-=======
->>>>>>> master
   - {fileID: 1550215414}
