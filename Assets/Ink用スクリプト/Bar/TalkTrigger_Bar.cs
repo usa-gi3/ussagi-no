@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class TalkTrigger_Shop : MonoBehaviour
+public class TalkTrigger_Bar : MonoBehaviour
 {
-    public InkController_Shop inkController;
+    public InkController_Bar inkController;
     private bool isPlayerNear = false;
 
     void Update()
