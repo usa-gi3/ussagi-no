@@ -29,7 +29,7 @@ public class ParticleOnTouch : MonoBehaviour
                 ps.Stop();
             }
 
-            // 少し待ってから破壊（エフェクトが自然に消えるように）
+            // 少し待ってから破壊
             Destroy(spawnedParticle, 1f);
             spawnedParticle = null;
         }

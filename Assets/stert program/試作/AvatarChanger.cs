@@ -58,6 +58,7 @@ public class AvatarChanger : MonoBehaviour
                 Destroy(currentAvatarObj);
 
             // 新しいアバターを出す
+
             currentAvatarObj = Instantiate(avatarPrefabs[currentAvatarID], transform);
             currentAvatarObj.transform.localPosition = Vector3.zero;
             currentAvatarObj.transform.localRotation = Quaternion.identity;
