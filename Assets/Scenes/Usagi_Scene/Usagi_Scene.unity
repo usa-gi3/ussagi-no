@@ -18648,7 +18648,6 @@ GameObject:
   - component: {fileID: 801188385}
   - component: {fileID: 801188384}
   - component: {fileID: 801188386}
-  - component: {fileID: 801188387}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: BGMSource
@@ -18829,19 +18828,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &801188387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 801188383}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b85f4f122f94e48a0e23d701089f69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sound1: {fileID: 8300000, guid: 91e627faf272ae14a8dba666a649f451, type: 3}
 --- !u!1001 &802737342
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40027,12 +40013,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1723982684}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07b85f4f122f94e48a0e23d701089f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound1: {fileID: 8300000, guid: 91e627faf272ae14a8dba666a649f451, type: 3}
+  jumpSE: {fileID: 8300000, guid: 91e627faf272ae14a8dba666a649f451, type: 3}
 --- !u!1 &1724073254
 GameObject:
   m_ObjectHideFlags: 0
