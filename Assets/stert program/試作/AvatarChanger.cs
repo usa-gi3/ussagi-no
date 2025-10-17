@@ -25,7 +25,7 @@ public class AvatarChanger : MonoBehaviour
         }
     }
 
-    // 変身 or 元に戻す
+    // 変身
     void ToggleAvatar()
     {
         if (isTransformed)
@@ -33,15 +33,16 @@ public class AvatarChanger : MonoBehaviour
             // 元に戻す処理
             if (currentAvatarObj != null)
             {
-                Destroy(currentAvatarObj); // 変身中のモデル削除
+                Destroy(currentAvatarObj); // 変身中のモデルを消す
                 currentAvatarObj = null;
             }
 
-            defaultModel.SetActive(true);   // デフォルトの見た目を戻す
+            defaultModel.SetActive(true);   // 元の見た目に戻す
             animator.avatar = defaultAvatar;
             animator.Rebind();
             animator.Update(0);
 
+            //変身していない
             isTransformed = false;
         }
         else
@@ -49,7 +50,7 @@ public class AvatarChanger : MonoBehaviour
             // 変身する処理
             if (currentAvatarID < 0 || currentAvatarID >= avatarPrefabs.Length)
             {
-                Debug.LogWarning("変身先が設定されてないよ！");
+                Debug.LogWarning("変身先がない");
                 return;
             }
 
@@ -57,12 +58,10 @@ public class AvatarChanger : MonoBehaviour
             if (currentAvatarObj != null)
                 Destroy(currentAvatarObj);
 
-            // 新しいアバターを出す
-
-            currentAvatarObj = Instantiate(avatarPrefabs[currentAvatarID], transform);
-            currentAvatarObj.transform.localPosition = Vector3.zero;
-            currentAvatarObj.transform.localRotation = Quaternion.identity;
-            currentAvatarObj.transform.localScale = Vector3.one;
+            currentAvatarObj = Instantiate(avatarPrefabs[currentAvatarID], transform);// 新しいアバターを生成            
+            currentAvatarObj.transform.localPosition = Vector3.zero;//位置初期化            
+            currentAvatarObj.transform.localRotation = Quaternion.identity;//向き初期化            
+            currentAvatarObj.transform.localScale = Vector3.one;//スケール初期化
             currentAvatarObj.tag = "Player"; // プレイヤータグをつける
 
             defaultModel.SetActive(false);   // デフォルトの見た目を消す
@@ -71,6 +70,7 @@ public class AvatarChanger : MonoBehaviour
             animator.Rebind();
             animator.Update(0);
 
+            //変身している
             isTransformed = true;
         }
     }
