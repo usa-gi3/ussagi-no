@@ -2124,8 +2124,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c8ccd8b044de8bd42b1aba46c0ddee8f, type: 2}
+  m_sharedMaterial: {fileID: 357608092962277, guid: c8ccd8b044de8bd42b1aba46c0ddee8f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -41646,7 +41646,7 @@ MonoBehaviour:
   inkJSONAsset: {fileID: 4900000, guid: 556875e751441b04ca6e177e8e5269dc, type: 3}
   dialoguePanel: {fileID: 1020070225}
   dialogueText: {fileID: 78243268}
-  choiceButtonPrefab: {fileID: 241775117859247443, guid: 62eb60226e136ed46a542de6e05dc50e, type: 3}
+  choiceButtonPrefab: {fileID: 241775117859247443, guid: 356efd00b3ca3754ca789e2626d58089, type: 3}
   choiceButtonContainer: {fileID: 587987376}
 --- !u!1001 &1764187756
 PrefabInstance:
