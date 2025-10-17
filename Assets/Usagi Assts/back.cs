@@ -15,6 +15,13 @@ public class back : MonoBehaviour
     private bool isTouchingofice = false;
     private bool isTouchingmeid = false;
 
+    public AudioClip sceneChangeSE; // ← SEを設定するための変数
+    private AudioSource audioSource; // ← AudioSource取得用
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void OnTriggerEnter(Collider other)
     {
@@ -136,4 +143,24 @@ public class back : MonoBehaviour
         }
     }
 
+    void LoadSceneWithSE(string sceneName)
+    {
+        Debug.Log("保存する位置: " + transform.position);
+        PositionMemory.SavePosition(transform.position);
+
+        // 効果音を鳴らす
+        if (audioSource != null && sceneChangeSE != null)
+        {
+            audioSource.PlayOneShot(sceneChangeSE);
+        }
+
+        // 少し待ってからシーンを切り替える（効果音が途中で切れないように）
+        StartCoroutine(LoadSceneAfterDelay(sceneName, 0.3f));
+    }
+
+    System.Collections.IEnumerator LoadSceneAfterDelay(string sceneName, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SceneManager.LoadScene(sceneName);
+    }
 }

@@ -6,6 +6,7 @@ public class SEManager : MonoBehaviour
 {
     public AudioClip menuSE;
     public AudioClip jumpSE;
+    //public AudioClip doorSE;
     //public AudioClip dressupSE;
 
     AudioSource audioSource;
@@ -29,6 +30,12 @@ public class SEManager : MonoBehaviour
         {
             audioSource.PlayOneShot(jumpSE);
         }
+
+        // ”àŠJ‚­‰¹
+        /*if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            audioSource.PlayOneShot(menuSE);
+        }*/
 
         // ‰¹
         /*if (Input.GetKeyDown(KeyCode.C))
