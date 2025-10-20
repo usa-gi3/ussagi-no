@@ -13,6 +13,9 @@ public class See : MonoBehaviour
 
     Quaternion cameraRot, characterRot;
 
+    float xRotation = 0f; // カメラの上下角
+    float yRotation = 0f; // プレイヤーの左右角
+
     // 上下回転の制限
     float minX = -90f, maxX = 90f;
 
@@ -28,19 +31,17 @@ public class See : MonoBehaviour
 
     void Update()
     {
-        float xRot = Input.GetAxis("Mouse X") * Ysensityvity;
-        float yRot = Input.GetAxis("Mouse Y") * Xsensityvity;
+        float mouseX = Input.GetAxis("Mouse X") * Ysensityvity;
+        float mouseY = Input.GetAxis("Mouse Y") * Xsensityvity;
 
-        // 左右：プレイヤーの体を回す
-        characterRot *= Quaternion.Euler(0f, xRot, 0f);
-
-        // 上下：カメラのX軸（縦）を回す
-        cameraRot *= Quaternion.Euler(-yRot, 0f, 0f);
-        cameraRot = ClampRotation(cameraRot); // ここで角度制限
+        // 角度を更新
+        yRotation += mouseX;
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, minX, maxX);
 
         // 回転を反映
-        transform.localRotation = characterRot;
-        cam.transform.localRotation = cameraRot;
+        transform.localRotation = Quaternion.Euler(0f, yRotation, 0f);
+        cam.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
     }
 
