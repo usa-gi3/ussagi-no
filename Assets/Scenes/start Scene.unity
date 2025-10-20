@@ -2184,6 +2184,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuSE: {fileID: 8300000, guid: 3c4c47abb112f0f4ebc5f8629769ee47, type: 3}
   jumpSE: {fileID: 8300000, guid: 91e627faf272ae14a8dba666a649f451, type: 3}
+  sceneChangeMoveSE: {fileID: 8300000, guid: fc4298b6b0d18a846a0f3befb4e6be49, type: 3}
+  sceneChangeBackSE: {fileID: 8300000, guid: e1f18eb35f18bb547a9267fd82f3dbae, type: 3}
 --- !u!82 &2060464964
 AudioSource:
   m_ObjectHideFlags: 0
