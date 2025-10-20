@@ -11581,6 +11581,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 868708866}
   m_SourcePrefab: {fileID: 100100000, guid: cfeb70b946475864b96b386ed9e35e94, type: 3}
+--- !u!1 &454895864 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f9045ab2be2d7c24cb76c469a2b54dea, type: 3}
+  m_PrefabInstance: {fileID: 2058513588}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &463387727
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24512,7 +24517,7 @@ MonoBehaviour:
   dialogueText: {fileID: 1866816257}
   messages:
   - "\u3053\u306E\u30D4\u30B6\u5C4B\u306E\u6DF1\u591C\u30D0\u30A4\u30C8\u7D66\u6599\u4F4E\u3044\u3051\u3069\u76E3\u8996\u30AB\u30E1\u30E9\u3092\u898B\u308B\u3060\u3051\u3067\u697D\u305D\u3046\u3060\u3057\u3084\u3063\u3066\u307F\u3088\u3046\u304B\u306A\u30FC"
-  player: {fileID: 0}
+  player: {fileID: 1723982684}
   talkMark: {fileID: 644937730}
   mainCamera: {fileID: 1217599347}
 --- !u!65 &1032715166
@@ -49200,13 +49205,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f9045ab2be2d7c24cb76c469a2b54dea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2058513592}
   m_SourcePrefab: {fileID: 100100000, guid: f9045ab2be2d7c24cb76c469a2b54dea, type: 3}
 --- !u!4 &2058513589 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f9045ab2be2d7c24cb76c469a2b54dea, type: 3}
   m_PrefabInstance: {fileID: 2058513588}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &2058513592
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454895864}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 880805446427783824, guid: f9045ab2be2d7c24cb76c469a2b54dea, type: 3}
 --- !u!1 &2058925087 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0725c4b9eb34f1148884fab9db34fd49, type: 3}
