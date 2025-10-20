@@ -1,10 +1,12 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TimeLimitManager : MonoBehaviour
 {
     public float timeLimit = 120f; // 制限時間（秒）
     private float currentTime;
+    public GameObject ClearSeen;
 
     public TextMeshProUGUI timerText; // UI表示用
 
@@ -30,6 +32,12 @@ public class TimeLimitManager : MonoBehaviour
     void GameOver()
     {
         Debug.Log("時間切れ！");
-        // ここにゲームオーバー処理を書く（UI表示、操作停止など）
+        ClearSeen.SetActive(true);
+
+        if (Input.GetMouseButtonDown(0)) // 左クリック
+        {
+            SceneManager.LoadScene("Bar_Scene");
+        }
+
     }
 }
