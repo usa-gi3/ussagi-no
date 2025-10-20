@@ -40758,7 +40758,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 937cb6ae6d505e84ab2eecf11634eb2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneChangeSE: {fileID: 8300000, guid: fc4298b6b0d18a846a0f3befb4e6be49, type: 3}
 --- !u!95 &1723982690
 Animator:
   serializedVersion: 5
@@ -40862,7 +40861,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 1215806581972751139, guid: a406c762c255fd84884fd444b41b1ccd, type: 2}
   m_audioClip: {fileID: 8300000, guid: fc4298b6b0d18a846a0f3befb4e6be49, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

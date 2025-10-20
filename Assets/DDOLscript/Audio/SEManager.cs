@@ -6,6 +6,8 @@ public class SEManager : MonoBehaviour
 {
     public AudioClip menuSE;
     public AudioClip jumpSE;
+    public AudioClip sceneChangeMoveSE; // ← シーン切り替え用を追加
+    public AudioClip sceneChangeBackSE;
     //public AudioClip doorSE;
     //public AudioClip dressupSE;
 
@@ -30,17 +32,14 @@ public class SEManager : MonoBehaviour
         {
             audioSource.PlayOneShot(jumpSE);
         }
+    }
 
-        // 扉開く音
-        /*if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            audioSource.PlayOneShot(menuSE);
-        }*/
-
-        // 音
-        /*if (Input.GetKeyDown(KeyCode.C))
-        {
-            audioSource.PlayOneShot(dressupSE);
-        }*/
+    public void PlaysceneChangeMoveSE()
+    {
+        audioSource.PlayOneShot(sceneChangeMoveSE);
+    }
+    public void PlaysceneChangeBackSE()
+    {
+        audioSource.PlayOneShot(sceneChangeBackSE);
     }
 }

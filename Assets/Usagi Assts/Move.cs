@@ -11,12 +11,12 @@ public class Move : MonoBehaviour
     private bool isTouchingOfice = false;
     private bool isTouchingmeid = false;
 
-    public AudioClip sceneChangeSE; // ← SEを設定するための変数
-    private AudioSource audioSource; // ← AudioSource取得用
+    private SEManager seManager; // ← SEManager参照用
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        // シーン内のSEManagerを探して参照する
+        seManager = FindObjectOfType<SEManager>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -104,51 +104,51 @@ public class Move : MonoBehaviour
     {
         if (isTouchingShop && Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("保存する位置: " + transform.position);
-            PositionMemory.SavePosition(transform.position);
-            SceneManager.LoadScene("Shop_Scene");
+            //Debug.Log("保存する位置: " + transform.position);
+            //PositionMemory.SavePosition(transform.position);
+            LoadSceneWithSE("Shop_Scene");
         }
 
         if (isTouchingVinyl && Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("保存する位置: " + transform.position);
-            PositionMemory.SavePosition(transform.position);
-            SceneManager.LoadScene("Vinyl_Scene");
+            //Debug.Log("保存する位置: " + transform.position);
+            //PositionMemory.SavePosition(transform.position);
+            LoadSceneWithSE("Vinyl_Scene");
         }
 
         if (isTouchingBar && Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("保存する位置: " + transform.position);
-            PositionMemory.SavePosition(transform.position);
-            SceneManager.LoadScene("Bar_Scene");
+            //Debug.Log("保存する位置: " + transform.position);
+            //PositionMemory.SavePosition(transform.position);
+            LoadSceneWithSE("Bar_Scene");
         }
 
         if (isTouchingTemple && Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("保存する位置: " + transform.position);
-            PositionMemory.SavePosition(transform.position);
-            SceneManager.LoadScene("Temple_Scene");
+            //Debug.Log("保存する位置: " + transform.position);
+            //PositionMemory.SavePosition(transform.position);
+            LoadSceneWithSE("Temple_Scene");
         }
 
         if (isTouchingPizza1 && Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("保存する位置: " + transform.position);
-            PositionMemory.SavePosition(transform.position);
-            SceneManager.LoadScene("Pizza1_Scene");
+            //Debug.Log("保存する位置: " + transform.position);
+            //PositionMemory.SavePosition(transform.position);
+            LoadSceneWithSE("Pizza1_Scene");
         }
 
         if (isTouchingOfice && Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("保存する位置: " + transform.position);
-            PositionMemory.SavePosition(transform.position);
-            SceneManager.LoadScene("Company_Scene");
+            //Debug.Log("保存する位置: " + transform.position);
+            //PositionMemory.SavePosition(transform.position);
+            LoadSceneWithSE("Company_Scene");
         }
 
         if (isTouchingmeid && Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("保存する位置: " + transform.position);
-            PositionMemory.SavePosition(transform.position);
-            SceneManager.LoadScene("Maid_Scene");
+            //Debug.Log("保存する位置: " + transform.position);
+            //PositionMemory.SavePosition(transform.position);
+            LoadSceneWithSE("Maid_Scene");
         }
     }
 
@@ -157,10 +157,10 @@ public class Move : MonoBehaviour
         Debug.Log("保存する位置: " + transform.position);
         PositionMemory.SavePosition(transform.position);
 
-        // 効果音を鳴らす
-        if (audioSource != null && sceneChangeSE != null)
+        // SEManager経由で効果音を鳴らす
+        if (seManager != null)
         {
-            audioSource.PlayOneShot(sceneChangeSE);
+            seManager.PlaysceneChangeMoveSE();
         }
 
         // 少し待ってからシーンを切り替える（効果音が途中で切れないように）

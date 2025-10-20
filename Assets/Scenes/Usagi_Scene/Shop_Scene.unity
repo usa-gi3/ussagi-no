@@ -1502,13 +1502,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-<<<<<<< HEAD
   m_fontAsset: {fileID: 11400000, guid: c8ccd8b044de8bd42b1aba46c0ddee8f, type: 2}
   m_sharedMaterial: {fileID: 357608092962277, guid: c8ccd8b044de8bd42b1aba46c0ddee8f, type: 2}
-=======
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
->>>>>>> Belgian
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2696,7 +2691,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19a8d41c1b9d7014a9f1e6241c130165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneChangeSE: {fileID: 8300000, guid: e1f18eb35f18bb547a9267fd82f3dbae, type: 3}
 --- !u!65 &826345229
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2744,7 +2738,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 1215806581972751139, guid: a406c762c255fd84884fd444b41b1ccd, type: 2}
   m_audioClip: {fileID: 8300000, guid: e1f18eb35f18bb547a9267fd82f3dbae, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
