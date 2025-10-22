@@ -61,7 +61,6 @@ public class See : MonoBehaviour
         return q;
     }
 
-    // --- スライダー用コールバック ---
     public void SetX(float value)
     {
         Xsensityvity = value;
