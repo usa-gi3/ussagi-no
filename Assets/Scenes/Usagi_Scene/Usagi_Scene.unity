@@ -22307,7 +22307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9142ecf9a880505499647c8c1acc5ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  avatarID: 1
+  avatarID: 2
 --- !u!65 &927619520
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28182,7 +28182,7 @@ Transform:
   m_GameObject: {fileID: 1217599345}
   serializedVersion: 2
   m_LocalRotation: {x: 0.27713856, y: 0, z: 0, w: 0.96083003}
-  m_LocalPosition: {x: -0.05, y: 1.329, z: -1.285}
+  m_LocalPosition: {x: -0.05, y: 1.081, z: -1.304}
   m_LocalScale: {x: -0.36000004, y: 0.4651165, z: 0.46511638}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40798,9 +40798,11 @@ MonoBehaviour:
   avatarPrefabs:
   - {fileID: 100026, guid: d4e8fd535b61e6449a8a8a0d1dd14731, type: 3}
   - {fileID: 100026, guid: 384a5df61c63fa74184c69861eb012a3, type: 3}
+  - {fileID: 5654057809629100363, guid: 5271cbffa130d9b48a7f888fd2a92d81, type: 3}
   avatars:
   - {fileID: 9000000, guid: d4e8fd535b61e6449a8a8a0d1dd14731, type: 3}
   - {fileID: 9000000, guid: 384a5df61c63fa74184c69861eb012a3, type: 3}
+  - {fileID: 9000000, guid: 49afdd6a5de3005468e28c1ebef7f43c, type: 3}
 --- !u!114 &1723982692
 MonoBehaviour:
   m_ObjectHideFlags: 0
