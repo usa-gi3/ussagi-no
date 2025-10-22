@@ -9,6 +9,7 @@ public class TimeLimitManager : MonoBehaviour
     public GameObject ClearSeen;
 
     public TextMeshProUGUI timerText; // UI•\Ž¦—p
+    public int ClearFlag = 0;
 
     void Start()
     {
@@ -39,5 +40,6 @@ public class TimeLimitManager : MonoBehaviour
             SceneManager.LoadScene("Bar_Scene");
         }
 
+        ClearFlag++;
     }
 }
