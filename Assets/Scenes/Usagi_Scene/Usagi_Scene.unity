@@ -20482,6 +20482,54 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1e1d2d0fb39ccf04691b2a8af0e7c6b5, type: 3}
   m_PrefabInstance: {fileID: 271266161}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &839887639 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4310679030643707851, guid: bfb89e30c0d46fd489205c75f493718c, type: 3}
+  m_PrefabInstance: {fileID: 3877999245389453107}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &839887642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839887639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d2c0db6bf6e1fd4dbcbbb6aec419063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueUI: {fileID: 1440974226}
+  dialogueText: {fileID: 1866816257}
+  messages:
+  - "\u5927\u4EBA\u3063\u3066\u5927\u5909\u3060\u306D"
+  - "\u306A\u3093\u3067\u30FC\uFF1F"
+  - "\u6BCE\u65E5\u5FD9\u3057\u3044\u3063\u3066\u3044\u3046\u306E"
+  - "\u306A\u3093\u3067\u30FC\uFF1F"
+  player: {fileID: 1723982684}
+  talkMark: {fileID: 0}
+  mainCamera: {fileID: 0}
+--- !u!65 &839887643
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839887639}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 1, z: 2.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &848845305 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6115495643100457985, guid: 2a1e00f6fd8038f4eb484539be2d71d2, type: 3}
@@ -51472,7 +51520,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4310679030643707851, guid: bfb89e30c0d46fd489205c75f493718c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 839887643}
+    - targetCorrespondingSourceObject: {fileID: 4310679030643707851, guid: bfb89e30c0d46fd489205c75f493718c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 839887642}
   m_SourcePrefab: {fileID: 100100000, guid: bfb89e30c0d46fd489205c75f493718c, type: 3}
 --- !u!1001 &5713703150851154584
 PrefabInstance:
