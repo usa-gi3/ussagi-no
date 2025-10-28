@@ -12,10 +12,17 @@ public class TimeLimitManager : MonoBehaviour
 
     public ScoreManager scoreManager;
 
+
+    public static int ClearFlag = 0;
+
+    public static int ClearScore = 0;
+
+    public static TimeLimitManager Instance;
+
     void Start()
     {
         currentTime = timeLimit;
-        
+
     }
 
     void Update()
@@ -36,11 +43,11 @@ public class TimeLimitManager : MonoBehaviour
     {
         ClearSeen.SetActive(true);
 
-        int score = scoreManager.score;
+        ClearScore = scoreManager.score;
 
-        PlayerPrefs.SetInt("PlayerScore", score);
 
-        PlayerPrefs.SetInt("StageBar_Clear", 1);
+
+        ClearFlag = 1;
 
         if (Input.GetMouseButtonDown(0)) // ç∂ÉNÉäÉbÉN
         {

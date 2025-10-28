@@ -35,7 +35,7 @@ public class InkController : MonoBehaviour
 
         story = new Story(inkJSONAsset.text);
 
-        int clear = PlayerPrefs.GetInt("StageBar_Clear", 0);
+        int clear = TimeLimitManager.ClearFlag;
 
         if (clear == 1)
         {
@@ -54,7 +54,7 @@ public class InkController : MonoBehaviour
     void After_shop()
     {
         
-        int Score = PlayerPrefs.GetInt("PlayerScore", 0);
+        int Score = TimeLimitManager.ClearScore;
 
 
         if (Score == 0)

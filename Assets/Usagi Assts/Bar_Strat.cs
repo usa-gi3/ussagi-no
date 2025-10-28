@@ -20,14 +20,10 @@ public class Bar_Strat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (i == 1)
-        {
-            PlayerPrefs.DeleteKey("StageBar_Clear");
-            i = 0;
-        }
+        
 
-        clear = PlayerPrefs.GetInt("StageBar_Clear", 1);
-     
+        clear = TimeLimitManager.ClearFlag;
+
 
         if (clear == 1)
         {
