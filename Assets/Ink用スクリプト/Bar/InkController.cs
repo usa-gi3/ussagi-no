@@ -61,7 +61,7 @@ public class InkController : MonoBehaviour
         {
             story.ChoosePathString("shop_after_1");
         }
-        else if(Score>0||Score<10)
+        else if(Score>0&&Score<10)
         {
             story.ChoosePathString("shop_after_2");
 
