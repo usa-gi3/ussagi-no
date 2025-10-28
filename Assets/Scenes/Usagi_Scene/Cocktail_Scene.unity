@@ -9191,6 +9191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1848157788}
+  score: 0
   orderChecker: {fileID: 913618241}
 --- !u!114 &1923005763
 MonoBehaviour:
@@ -9207,6 +9208,7 @@ MonoBehaviour:
   timeLimit: 60
   ClearSeen: {fileID: 585717847}
   timerText: {fileID: 904382695}
+  scoreManager: {fileID: 1923005762}
 --- !u!114 &1923005764
 MonoBehaviour:
   m_ObjectHideFlags: 0

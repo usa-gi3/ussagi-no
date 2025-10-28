@@ -9,11 +9,13 @@ public class TimeLimitManager : MonoBehaviour
     public GameObject ClearSeen;
 
     public TextMeshProUGUI timerText; // UI表示用
-    public int ClearFlag = 0;
+
+    public ScoreManager scoreManager;
 
     void Start()
     {
         currentTime = timeLimit;
+        
     }
 
     void Update()
@@ -32,14 +34,19 @@ public class TimeLimitManager : MonoBehaviour
 
     void GameOver()
     {
-        Debug.Log("時間切れ！");
         ClearSeen.SetActive(true);
+
+        int score = scoreManager.score;
+
+        PlayerPrefs.SetInt("PlayerScore", score);
+
+        PlayerPrefs.SetInt("StageBar_Clear", 1);
 
         if (Input.GetMouseButtonDown(0)) // 左クリック
         {
             SceneManager.LoadScene("Bar_Scene");
         }
 
-        ClearFlag++;
+        
     }
 }
