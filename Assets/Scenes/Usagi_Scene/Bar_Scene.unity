@@ -2877,7 +2877,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 465328393}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3540507580114345841, guid: 2e2f50ae6981ae345a26a7d077ed4652, type: 3}
       propertyPath: m_LocalScale.x
@@ -2893,15 +2893,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3540507580114345841, guid: 2e2f50ae6981ae345a26a7d077ed4652, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.91165423
+      value: 4.0560875
       objectReference: {fileID: 0}
     - target: {fileID: 3540507580114345841, guid: 2e2f50ae6981ae345a26a7d077ed4652, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.009940147
+      value: 4.858552
       objectReference: {fileID: 0}
     - target: {fileID: 3540507580114345841, guid: 2e2f50ae6981ae345a26a7d077ed4652, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.46653843
+      value: 8.240839
       objectReference: {fileID: 0}
     - target: {fileID: 3540507580114345841, guid: 2e2f50ae6981ae345a26a7d077ed4652, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2938,6 +2938,10 @@ PrefabInstance:
     - target: {fileID: 4209097972572177867, guid: 2e2f50ae6981ae345a26a7d077ed4652, type: 3}
       propertyPath: m_Name
       value: Prop_KitchenChair_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 4209097972572177867, guid: 2e2f50ae6981ae345a26a7d077ed4652, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8047,7 +8051,6 @@ Transform:
   - {fileID: 1219194105}
   - {fileID: 811437403}
   - {fileID: 2110350338}
-  - {fileID: 2064479231}
   - {fileID: 2134964692}
   - {fileID: 177793084}
   - {fileID: 2062517677}
@@ -41175,11 +41178,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c05e831c1a7cd42409777f8defe5b330, type: 3}
   m_PrefabInstance: {fileID: 286117629}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2064479231 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3540507580114345841, guid: 2e2f50ae6981ae345a26a7d077ed4652, type: 3}
-  m_PrefabInstance: {fileID: 152480438}
-  m_PrefabAsset: {fileID: 0}
 --- !u!65 &2064479237
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -41893,6 +41891,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2110033713}
   - component: {fileID: 2110033712}
+  - component: {fileID: 2110033714}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -41932,6 +41931,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2110033714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110033711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f59bd41c82bb58b46adef3de40559a3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Chair: {fileID: 21067351}
+  Player: {fileID: 826345221}
+  inkController: {fileID: 2110033712}
+  clear: 0
 --- !u!4 &2110350338 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9048114940636094578, guid: 49e9e60db13726243b7cd9c564958b4d, type: 3}
@@ -42881,6 +42896,7 @@ SceneRoots:
   - {fileID: 2042661658}
   - {fileID: 1062584751}
   - {fileID: 1921953948}
+  - {fileID: 152480438}
   - {fileID: 465328393}
   - {fileID: 2041588247}
   - {fileID: 1078515253}

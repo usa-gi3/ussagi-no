@@ -17,6 +17,12 @@ public class InkController : MonoBehaviour
 
     private Story story;
 
+    void Start()
+    {
+        
+    }
+
+
     public void StartDialogue()
     {
         Debug.Log("StartDialogueが呼ばれました");
@@ -29,11 +35,47 @@ public class InkController : MonoBehaviour
 
         story = new Story(inkJSONAsset.text);
 
-        story.ChoosePathString("shop_intro");
+        int clear = PlayerPrefs.GetInt("StageBar_Clear", 0);
+
+        if (clear == 1)
+        {
+            After_shop();
+        }
+        else
+        {
+            story.ChoosePathString("shop_intro");
+        }
+
 
         dialoguePanel.SetActive(true);
         RefreshView();
     }
+
+    void After_shop()
+    {
+        
+        int Score = PlayerPrefs.GetInt("PlayerScore", 0);
+
+
+        if (Score == 0)
+        {
+            story.ChoosePathString("shop_after_1");
+        }
+        else if(Score>0||Score<10)
+        {
+            story.ChoosePathString("shop_after_2");
+
+        }
+        else if (Score >= 10)
+        {
+            story.ChoosePathString("shop_after_3");
+        }
+
+
+
+    }
+
+
 
 
 

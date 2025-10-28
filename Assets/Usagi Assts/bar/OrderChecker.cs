@@ -7,7 +7,7 @@ public class OrderChecker : MonoBehaviour
     public ObjectClickManager clickManager;
     public int Clear;
     public ScoreManager scoreManager;
-    public GameObject ClearSeen;
+    
 
     void Update()
     {
@@ -47,11 +47,6 @@ public class OrderChecker : MonoBehaviour
             Debug.Log("注文通り！正解です！");
             Clear++;
             scoreManager.UpdateScore(Clear);
-
-            if (Clear > 4)
-            {
-                ClearSeen.SetActive(true);
-            }
 
             clickManager.Reset();
             orderGenerator.GenerateNewOrder();
