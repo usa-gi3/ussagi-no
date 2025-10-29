@@ -29,4 +29,15 @@ public class TalkTrigger_ookami : MonoBehaviour
             inkController.EndDialogue(); // —£‚ê‚½‚çUI‚ğ•Â‚¶‚éi”CˆÓj
         }
     }
+
+    public void DestroySelf()
+    {
+        Debug.Log($"{gameObject.name} ‚ğíœ‚µ‚Ü‚·B");
+        if (inkController != null)
+        {
+            inkController.EndDialogue();
+        }
+
+        Destroy(gameObject);
+    }
 }

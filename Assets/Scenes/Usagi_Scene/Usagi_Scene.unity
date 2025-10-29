@@ -12270,6 +12270,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dog_001
       objectReference: {fileID: 0}
+    - target: {fileID: 2629182449500102118, guid: 15ca4494f24bf9741a48b37ec2c4c632, type: 3}
+      propertyPath: m_TagString
+      value: Dog
+      objectReference: {fileID: 0}
     - target: {fileID: 3402305891407841116, guid: 15ca4494f24bf9741a48b37ec2c4c632, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -12400,8 +12404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueUI: {fileID: 1440974226}
   dialogueText: {fileID: 1866816257}
-  messages:
-  - 
+  messages: []
   player: {fileID: 1723982684}
   talkMark: {fileID: 727064782}
   mainCamera: {fileID: 1217599347}
@@ -42281,6 +42284,7 @@ MonoBehaviour:
   dialogueText: {fileID: 78243268}
   choiceButtonPrefab: {fileID: 241775117859247443, guid: 356efd00b3ca3754ca789e2626d58089, type: 3}
   choiceButtonContainer: {fileID: 587987376}
+  talkTrigger: {fileID: 501907137}
 --- !u!1001 &1764187756
 PrefabInstance:
   m_ObjectHideFlags: 0

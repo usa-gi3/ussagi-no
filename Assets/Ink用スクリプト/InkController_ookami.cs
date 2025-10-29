@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using Ink.Runtime;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class InkController_ookami : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class InkController_ookami : MonoBehaviour
     public TextMeshProUGUI dialogueText;
     public GameObject choiceButtonPrefab;
     public Transform choiceButtonContainer;
+
+    [Header("関連スクリプト")]
+    public TalkTrigger_ookami talkTrigger;
 
     private Story story;
 
@@ -74,6 +78,7 @@ public class InkController_ookami : MonoBehaviour
             int choiceIndex = story.currentChoices.IndexOf(choice);
             button.onClick.AddListener(() => OnChoiceSelected(choiceIndex));
         }
+        CheckForDestroyFlag();//破壊する
     }
 
 
@@ -87,6 +92,26 @@ public class InkController_ookami : MonoBehaviour
     {
         dialoguePanel.SetActive(false);
         Debug.Log("Dialogue ended.");
+    }
+
+    void CheckForDestroyFlag()
+    {
+        if (story != null && story.variablesState != null)
+        {
+            if (story.variablesState["delete_me"] != null &&
+                (bool)story.variablesState["delete_me"])
+            {
+                Debug.Log("削除フラグ検知 → TalkTriggerに削除要求を送ります。");
+                if (talkTrigger != null)
+                {
+                    talkTrigger.DestroySelf();
+                }
+                else
+                {
+                    Debug.LogWarning("talkTriggerが設定されていません。NPCを破壊できません。");
+                }
+            }
+        }
     }
 
     void Update()
