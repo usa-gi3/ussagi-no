@@ -6,10 +6,11 @@ public class Shop_Start : MonoBehaviour
 {
     public GameObject Player;
 
-    public InkController inkController;
+    public InkController_Shop inkController;
 
-    Vector3 Player_Position = new Vector3(3.751f, -3.806f, 3.059f);
+    Vector3 Player_Position = new Vector3(3.7f, -4.5f, 2.5f);
 
+    public GameObject Carrot;
 
     [Header("PlayerPrefsの値（読み取り専用）")]
     [SerializeField] private int clear;
@@ -20,8 +21,9 @@ public class Shop_Start : MonoBehaviour
     void Start()
     {
 
-
+        
         clear = Point_Sum.ClearFlag_town;
+
 
 
         if (clear == 1)
@@ -29,6 +31,7 @@ public class Shop_Start : MonoBehaviour
             Debug.Log("ステージ1はクリア済み！");
             Player.transform.position = Player_Position;
             inkController.StartDialogue();
+            Carrot.SetActive(this);
 
         }
 
