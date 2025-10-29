@@ -43,9 +43,7 @@ public class Point_Sum : MonoBehaviour
         if (score > 100)
         {
             Carrot1.SetActive(true);
-            ClearFlag_town = 1;
-            ClearSeen.SetActive(true);
-
+           
         }  
         if (score > 200)
         {
