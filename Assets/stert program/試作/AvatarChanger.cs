@@ -12,6 +12,11 @@ public class AvatarChanger : MonoBehaviour
     public GameObject[] avatarPrefabs;     // 変身先の見た目（プレハブ）
     public Avatar[] avatars;               // 各変身先のAvatar（Humanoid）
 
+    [Header("Sound Effects")]
+    public AudioSource audioSource;         // SEを再生するAudioSource
+    public AudioClip transformSE;           // 変身時のSE
+    public AudioClip revertSE;              // 戻る時のSE
+
     private GameObject currentAvatarObj;   // 今出してるアバター（実体）
     private int currentAvatarID = -1;      // 今選ばれてるアバター番号
     private bool isTransformed = false;    // 今変身してるかどうか
@@ -42,6 +47,10 @@ public class AvatarChanger : MonoBehaviour
             animator.Rebind();
             animator.Update(0);
 
+            // SE再生（戻る音）
+            if (audioSource != null && revertSE != null)
+                audioSource.PlayOneShot(revertSE);
+
             //変身していない
             isTransformed = false;
         }
@@ -69,6 +78,10 @@ public class AvatarChanger : MonoBehaviour
             animator.avatar = avatars[currentAvatarID];
             animator.Rebind();
             animator.Update(0);
+
+            // SE再生（変身音）
+            if (audioSource != null && transformSE != null)
+                audioSource.PlayOneShot(transformSE);
 
             //変身している
             isTransformed = true;

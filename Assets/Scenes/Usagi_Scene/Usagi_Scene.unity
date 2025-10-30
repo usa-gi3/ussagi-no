@@ -41232,6 +41232,9 @@ MonoBehaviour:
   - {fileID: 9000000, guid: 384a5df61c63fa74184c69861eb012a3, type: 3}
   - {fileID: 9000000, guid: 8ecfa3e2793aea4438cf3cad84f79ba7, type: 3}
   - {fileID: 9000000, guid: ae24f74e40160e74e9e8cff4913a8c88, type: 3}
+  audioSource: {fileID: 1723982695}
+  transformSE: {fileID: 8300000, guid: 66e7a3485a1fb5d44a9b32a907135782, type: 3}
+  revertSE: {fileID: 8300000, guid: 66e7a3485a1fb5d44a9b32a907135782, type: 3}
 --- !u!114 &1723982692
 MonoBehaviour:
   m_ObjectHideFlags: 0
