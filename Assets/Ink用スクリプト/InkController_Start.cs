@@ -1,4 +1,4 @@
-ï»¿using UnityEngine;
+using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Ink.Runtime;
@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class InkController_ookami : MonoBehaviour
+public class InkController_Start : MonoBehaviour
 {
     [Header("Ink")]
     public TextAsset inkJSONAsset;
@@ -17,54 +17,40 @@ public class InkController_ookami : MonoBehaviour
     public GameObject choiceButtonPrefab;
     public Transform choiceButtonContainer;
 
-    [Header("é–¢é€£ã‚¹ã‚¯ãƒªãƒ—ãƒˆ")]
+    [Header("ŠÖ˜AƒXƒNƒŠƒvƒg")]
     public TalkTrigger_ookami talkTrigger;
 
     private Story story;
 
-    public GameObject usagiImage;
-    public GameObject ookamiImage;
-
     public void StartDialogue()
     {
-        Debug.Log("StartDialogueãŒå‘¼ã°ã‚Œã¾ã—ãŸ");
+        Debug.Log("StartDialogue‚ªŒÄ‚Î‚ê‚Ü‚µ‚½");
 
         if (inkJSONAsset == null)
         {
-            Debug.LogError("inkJSONAsset ãŒè¨­å®šã•ã‚Œã¦ã„ã¾ã›ã‚“");
+            Debug.LogError("inkJSONAsset ‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ");
             return;
         }
 
         story = new Story(inkJSONAsset.text);
 
-        if (Usagi_S.New_start == 1)
-        {
-            story.ChoosePathString("New_Game");
-        }
-        else
-        {
-            story.ChoosePathString("book_front");
-        }
+        story.ChoosePathString("New_Game");
 
         dialoguePanel.SetActive(true);
         RefreshView();
     }
 
+
+
     void RefreshView()
     {
-        Debug.Log("é¸æŠè‚¢ã®æ•°ï¼š" + story.currentChoices.Count);
+        Debug.Log("‘I‘ğˆ‚Ì”F" + story.currentChoices.Count);
 
-        // 1. ã‚»ãƒªãƒ•ã‚’è¡¨ç¤º
+        // 1. ƒZƒŠƒt‚ğ•\¦
         if (story.canContinue)
         {
             string text = story.Continue().Trim();
             dialogueText.text = text.Replace("\n", "\n");
-
-            // ã‚¿ã‚°å‡¦ç†
-            foreach (string tag in story.currentTags)
-            {
-                HandleTag(tag);
-            }
         }
         else if (story.currentChoices.Count == 0)
         {
@@ -72,17 +58,17 @@ public class InkController_ookami : MonoBehaviour
             return;
         }
 
-        // 2. æ—¢å­˜ã®é¸æŠè‚¢ã‚’å‰Šé™¤
+        // 2. Šù‘¶‚Ì‘I‘ğˆ‚ğíœ
         foreach (Transform child in choiceButtonContainer)
         {
             Destroy(child.gameObject);
         }
 
-        // 3. é¸æŠè‚¢ã‚’ç”Ÿæˆ
+        // 3. ‘I‘ğˆ‚ğ¶¬
         foreach (Choice choice in story.currentChoices)
         {
             GameObject buttonObj = Instantiate(choiceButtonPrefab, choiceButtonContainer);
-            Debug.Log("ãƒœã‚¿ãƒ³ç”Ÿæˆ: " + choice.text);
+            Debug.Log("ƒ{ƒ^ƒ“¶¬: " + choice.text);
 
             TextMeshProUGUI buttonText = buttonObj.GetComponentInChildren<TextMeshProUGUI>();
             buttonText.text = choice.text;
@@ -91,31 +77,9 @@ public class InkController_ookami : MonoBehaviour
             int choiceIndex = story.currentChoices.IndexOf(choice);
             button.onClick.AddListener(() => OnChoiceSelected(choiceIndex));
         }
-
-        CheckForDestroyFlag();
+        CheckForDestroyFlag();//”j‰ó‚·‚é
     }
 
-    void HandleTag(string tag)
-    {
-        Debug.Log("æ¤œå‡ºã•ã‚ŒãŸã‚¿ã‚°: " + tag);
-
-        if (tag == "show_usagi")
-        {
-            usagiImage.SetActive(true);
-        }
-        else if (tag == "hide_usagi")
-        {
-            usagiImage.SetActive(false);
-        }
-        else if (tag == "show_ookami")
-        {
-            ookamiImage.SetActive(true);
-        }
-        else if (tag == "hide_ookami")
-        {
-            ookamiImage.SetActive(false);
-        }
-    }
 
     void OnChoiceSelected(int choiceIndex)
     {
@@ -136,14 +100,14 @@ public class InkController_ookami : MonoBehaviour
             if (story.variablesState["delete_me"] != null &&
                 (bool)story.variablesState["delete_me"])
             {
-                Debug.Log("å‰Šé™¤ãƒ•ãƒ©ã‚°æ¤œçŸ¥ â†’ TalkTriggerã«å‰Šé™¤è¦æ±‚ã‚’é€ã‚Šã¾ã™ã€‚");
+                Debug.Log("íœƒtƒ‰ƒOŒŸ’m ¨ TalkTrigger‚Éíœ—v‹‚ğ‘—‚è‚Ü‚·B");
                 if (talkTrigger != null)
                 {
                     talkTrigger.DestroySelf();
                 }
                 else
                 {
-                    Debug.LogWarning("talkTriggerãŒè¨­å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚NPCã‚’ç ´å£Šã§ãã¾ã›ã‚“ã€‚");
+                    Debug.LogWarning("talkTrigger‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñBNPC‚ğ”j‰ó‚Å‚«‚Ü‚¹‚ñB");
                 }
             }
         }
@@ -160,4 +124,5 @@ public class InkController_ookami : MonoBehaviour
                 RefreshView();
         }
     }
+
 }
