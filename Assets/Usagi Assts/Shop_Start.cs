@@ -21,8 +21,8 @@ public class Shop_Start : MonoBehaviour
     void Start()
     {
 
-        clear = 1;
-        //clear = Point_Sum.ClearFlag_town;
+       
+        clear = Point_Sum.ClearFlag_town;
 
 
 
