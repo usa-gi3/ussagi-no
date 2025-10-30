@@ -8,7 +8,7 @@ public class Shop_Start : MonoBehaviour
 
     public InkController_Shop inkController;
 
-    Vector3 Player_Position = new Vector3(3.7f, -4.5f, 2.5f);
+    Vector3 Player_Position = new Vector3(18.5f, -304f, 341f);
 
     public GameObject Carrot;
 
@@ -21,8 +21,8 @@ public class Shop_Start : MonoBehaviour
     void Start()
     {
 
-        
-        clear = Point_Sum.ClearFlag_town;
+        clear = 1;
+        //clear = Point_Sum.ClearFlag_town;
 
 
 
