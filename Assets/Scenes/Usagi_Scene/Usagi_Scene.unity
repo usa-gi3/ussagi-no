@@ -3730,7 +3730,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1440974227}
   - {fileID: 581943986}
   - {fileID: 1878213105}
   - {fileID: 2074691368}
@@ -45010,7 +45009,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: -11.640923}
   m_LocalScale: {x: 19.25, y: 10.9, z: 7.12}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1440974227}
   m_Father: {fileID: 130888065}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -45248,7 +45248,8 @@ MonoBehaviour:
   dialogueText: {fileID: 1866816257}
   messages:
   - "\u81EA\u5206\u306E\u5BB6\u3060"
-  - "\u672C\u3092\u8CB7\u3044\u306B\u3044\u304F\u3064\u3082\u308A\u304C\u3068\u3093\u3067\u3082\u306A\u3044\u3053\u3068\u306B\u306A\u3063\u3066\u3057\u307E\u3063\u305F"
+  - "\u4ECA\u7528\u4E8B\u306F\u306A\u3044"
+  - "\u4ECA\u304B\u3089\u672C\u5C4B\u306B\u65B0\u520A\u3092\u8CB7\u3044\u306B\u884C\u304F\u306E\u3060\u304B\u3089"
   player: {fileID: 1723982684}
   talkMark: {fileID: 2089334323}
   mainCamera: {fileID: 1217599347}
@@ -51727,7 +51728,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 130888065}
+    m_TransformParent: {fileID: 1878213105}
     m_Modifications:
     - target: {fileID: 791567348769281246, guid: 9aca50b9258b86047927671d7290bd36, type: 3}
       propertyPath: m_Pivot.x
@@ -51763,15 +51764,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 791567348769281246, guid: 9aca50b9258b86047927671d7290bd36, type: 3}
       propertyPath: m_LocalScale.x
-      value: 20
+      value: 1.0389609
       objectReference: {fileID: 0}
     - target: {fileID: 791567348769281246, guid: 9aca50b9258b86047927671d7290bd36, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 0.4587156
       objectReference: {fileID: 0}
     - target: {fileID: 791567348769281246, guid: 9aca50b9258b86047927671d7290bd36, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.14044945
       objectReference: {fileID: 0}
     - target: {fileID: 791567348769281246, guid: 9aca50b9258b86047927671d7290bd36, type: 3}
       propertyPath: m_LocalPosition.x
@@ -51783,7 +51784,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 791567348769281246, guid: 9aca50b9258b86047927671d7290bd36, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.6349615
       objectReference: {fileID: 0}
     - target: {fileID: 791567348769281246, guid: 9aca50b9258b86047927671d7290bd36, type: 3}
       propertyPath: m_LocalRotation.w
@@ -51791,23 +51792,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 791567348769281246, guid: 9aca50b9258b86047927671d7290bd36, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: -0.0000000032596286
       objectReference: {fileID: 0}
     - target: {fileID: 791567348769281246, guid: 9aca50b9258b86047927671d7290bd36, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.000000059604638
       objectReference: {fileID: 0}
     - target: {fileID: 791567348769281246, guid: 9aca50b9258b86047927671d7290bd36, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 1.9428898e-16
+      value: -0.000000010244547
       objectReference: {fileID: 0}
     - target: {fileID: 791567348769281246, guid: 9aca50b9258b86047927671d7290bd36, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.000014311227
+      value: -0.00059604034
       objectReference: {fileID: 0}
     - target: {fileID: 791567348769281246, guid: 9aca50b9258b86047927671d7290bd36, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -305.00003
+      value: -27.98056
       objectReference: {fileID: 0}
     - target: {fileID: 791567348769281246, guid: 9aca50b9258b86047927671d7290bd36, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -51829,10 +51830,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7036054764209490421, guid: 9aca50b9258b86047927671d7290bd36, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 357608092962277, guid: c8ccd8b044de8bd42b1aba46c0ddee8f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

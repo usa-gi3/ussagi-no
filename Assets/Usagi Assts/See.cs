@@ -21,12 +21,16 @@ public class See : MonoBehaviour
 
     void Start()
     {
-        cameraRot = cam.transform.localRotation;
-        characterRot = transform.localRotation;
-
-        // 保存されていた感度を読み込む
+        // 現在の感度をロード
         Xsensityvity = PlayerPrefs.GetFloat("X_Sensitivity", Xsensityvity);
         Ysensityvity = PlayerPrefs.GetFloat("Y_Sensitivity", Ysensityvity);
+
+        // 現在の回転を記録して、初期向きを維持
+        Vector3 camAngles = cam.transform.localEulerAngles;
+        Vector3 charAngles = transform.localEulerAngles;
+
+        xRotation = camAngles.x;
+        yRotation = charAngles.y;
     }
 
     void Update()
